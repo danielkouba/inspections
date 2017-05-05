@@ -1,0 +1,18 @@
+<md-content class="md-padding" layout-xs="column" layout="column">
+    <h1>Log In</h1>
+    <div ng-messages="loginErrors" role="alert">
+      <div ng-message="general">Invalid email and password combination.</div>
+    </div>
+	<md-input-container class="md-block">
+        <label>Email</label>
+        <input required md-no-asterisk name="email" ng-model="userData.email">
+    </md-input-container>
+
+	<md-input-container class="md-block">
+        <label>Password</label>
+        <input required md-no-asterisk name="password" ng-model="userData.password">
+    </md-input-container>
+
+	<md-button class="md-primary md-raised" ng-click="login()">Log In</md-button>
+    <a href="#/register">Sign up</a>	
+</md-content>
