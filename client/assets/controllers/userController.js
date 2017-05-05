@@ -49,7 +49,8 @@ myApp.controller('userController', function($location, $scope, $cookies, userFac
 		} else if ($cookies.get('type') == 'inspector'){
 			$location.url('/dashboard/inspector');
 		} else {
-			//The Correct Path			
+			//The Correct Path
+			$scope.getUserLifts()			
 		}
 	}
 	// END Constructors
@@ -127,5 +128,20 @@ myApp.controller('userController', function($location, $scope, $cookies, userFac
 
 		})
 	}
+
+		$scope.getUserLifts = function(){
+		userFactory.getUserLifts(function(data){
+			if (data.errors) {
+				console.log("THERE WERE ERRORS GETTING INSPECTIONS")
+				// console.log(data.errors)
+			} else {
+				console.log("You super got the lifts bro")
+				$scope.lifts = data;
+				console.log($scope.lifts)
+			}
+
+		})
+	}
+
 
 });

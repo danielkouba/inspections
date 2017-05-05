@@ -35,14 +35,28 @@ myApp.factory('userFactory', ['$http', function($http){
 	}
 
 	////////////////////////////////////////
-	// Get Users
+	// Get Users Inspections
 	factory.getInspections = function(callback){
 		$http.get('/inspection').then(function(returned_data){
 			callback(returned_data.data)
 		})
 	}
-	// END Get Users
+	// END Get Users Inspections
 	////////////////////////////////////////
+
+
+
+	////////////////////////////////////////
+	// Get Users Lifts
+	factory.getUserLifts = function(callback){
+		$http.get('/user/lifts').then(function(returned_data){
+			callback(returned_data.data)
+		})
+	}
+	// END Get Users Inspections
+	////////////////////////////////////////
+
+
 
 	factory.checkLogin = function(callback){
 		$http.get('/loggedin').then(function(returned_data){

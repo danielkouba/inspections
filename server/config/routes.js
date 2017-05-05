@@ -4,6 +4,7 @@
 var path = require('path'),
     users = require('../controllers/users.js'),
     inspections = require('../controllers/inspection.js');
+    lifts = require('../controllers/lift.js');
 
 ////////////////////////////////////////
 // Login Middleware
@@ -22,6 +23,8 @@ module.exports = function(app){
     app.get('/admin', users.index);
     app.post('/create', users.create);
     app.post('/inspection/create', inspections.create);
+    app.post('/lift/create', lifts.create);
+    app.get('/user/lifts', lifts.getUserLifts);
     app.post('/login', users.login);
     app.get('/inspection', inspections.getInspections);
     app.get('/loggedin', users.loggedin);

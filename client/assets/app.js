@@ -29,27 +29,27 @@ myApp.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemin
 	.when('/register', {
 		templateUrl: 'assets/partials/register.html',
 		controller: 'userController',
-		controllerAs: 'FC'
+		controllerAs: 'UC'
 	})
 	.when('/login', {
 		templateUrl: 'assets/partials/login.html',
 		controller: 'userController',
-		controllerAs: 'FC'
+		controllerAs: 'UC'
 	})
 	.when('/dashboard/inspector', {
 		templateUrl: 'assets/partials/inspectorDashboard.html',
 		controller: 'userController',
-		controllerAs: 'FC'
+		controllerAs: 'UC'
 	})
 	.when('/dashboard/liftowner', {
 		templateUrl: 'assets/partials/liftownerDashboard.html',
 		controller: 'userController',
-		controllerAs: 'FC'
+		controllerAs: 'UC'
 	})
 	.when('/dashboard/admin', {
 		templateUrl: 'assets/partials/adminDashboard.html',
 		controller: 'userController',
-		controllerAs: 'FC'
+		controllerAs: 'UC'
 	})
 	.when('/inspect', {
 		templateUrl: 'assets/partials/form.html',

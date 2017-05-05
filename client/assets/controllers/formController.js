@@ -143,7 +143,13 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
 
 	}
 
-
+    $scope.addlift = function(){
+        console.log($scope.newLift);
+        formFactory.addlift($scope.newLift, function(data){
+            $scope.lifts = data
+            $location.url('/dashboard/liftowner')
+        })
+    }
 	$scope.toggleExpanded = function(expanded, $event) {
 		//Prevent the button click from selecting entire row
   		$event.stopPropagation();

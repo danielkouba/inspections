@@ -9,9 +9,11 @@ var uniqueValidator = require('mongoose-unique-validator');
 ////////////////////////////////////////
 
 var liftSchema = new mongoose.Schema({
-	name:     			{type: String, required: true, trim: true},
-	model:     			{type: String, required: true, trim: true},
-	type: 	  			{type: String, required: true, trim: true},
+	model:     			{type: String, trim: true},
+	serial:     			{type: String, trim: true},
+	type: 	  			{type: String, trim: true},
+	capacity: 	  			{type: String, trim: true},
+	manufacturer: 	  			{type: String, trim: true},
 	_inspections:      [{type: Schema.Types.ObjectId, ref: 'Inspection'}],
 	_owner: 	   		{type: Schema.Types.ObjectId, ref: 'User'}
 },{
