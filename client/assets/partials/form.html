@@ -14,7 +14,26 @@
             <md-step-body>
                 <md-content class="md-padding" layout-xs="column" layout="column">
                 <p>Appendix A</p>
-
+                <!-- SELECT Business AutoComplete -->
+                <md-autocomplete
+                  ng-disabled="formData.isDisabled"
+                  md-no-cache="formData.noCache"
+                  md-selected-item="formData.selectedItem"
+                  md-search-text-change="searchTextChange(formData.searchText)"
+                  md-search-text="formData.searchText"
+                  md-selected-item-change="selectedOwnerChange(owner)"
+                  md-items="owner in lift_owners"
+                  md-item-text="owner.company"
+                  md-min-length="0"
+                  placeholder="Choose a business">
+                <md-item-template>
+                  <span md-highlight-text="formData.searchText" md-highlight-flags="^i">{{owner.company}}</span>
+                </md-item-template>
+                <md-not-found>
+                  No states matching "{{formData.searchText}}" were found.
+                  <a ng-click="formData.newState(formData.searchText)">Create a new one!</a>
+                </md-not-found>
+              </md-autocomplete>
 
                 <md-input-container class="md-block">
                     <label>Lift Owner</label>
@@ -124,6 +143,28 @@
                     <label>Employee ID #</label>
                     <input required md-no-asterisk name="employee_id" ng-model="formData.employee_id">
                 </md-input-container>
+
+                <!-- SELECT Lift AutoComplete -->
+
+                <md-autocomplete
+                  ng-disabled="formData.isDisabled"
+                  md-no-cache="formData.noCache"
+                  md-selected-item="formData.selectedLift"
+                  md-search-text-change="searchTextChange(formData.searchLift)"
+                  md-search-text="formData.searchLift"
+                  md-selected-item-change="selectedLiftChange(lift)"
+                  md-items="lift in lifts"
+                  md-item-text="lift.model"
+                  md-min-length="0"
+                  placeholder="Choose an existing lift">
+                <md-item-template>
+                  <span md-highlight-text="formData.searchLift" md-highlight-flags="^i">{{lift.model}}</span>
+                </md-item-template>
+                <md-not-found>
+                  No states matching "{{formData.searchLift}}" were found.
+                  <a ng-click="formData.newState(formData.searchLift)">Create a new one!</a>
+                </md-not-found>
+              </md-autocomplete>
 
                 <md-input-container class="md-block">
                     <label>Lift Manufacturer</label>

@@ -28,6 +28,7 @@ module.exports = function(app){
     app.post('/login', users.login);
     app.get('/inspection', inspections.getInspections);
     app.get('/loggedin', users.loggedin);
+    app.get('/user/liftowners', users.getLiftOwners);
     // app.use(loginAuthentication);
     // app.post('/appointment', users.appt);
     // app.get('/appointment', users.allAppts);
