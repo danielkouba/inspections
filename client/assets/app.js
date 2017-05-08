@@ -4,10 +4,23 @@ myApp.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemin
 	
 	$locationProvider.hashPrefix('');
 
-	$mdThemingProvider.theme('default')
-		.primaryPalette('blue-grey')
-		.accentPalette('blue');
-	
+
+
+
+
+  // Extend the red theme with a different color and make the contrast color black instead of white.
+  // For example: raised button text will be black instead of white.
+  var aliBlue = $mdThemingProvider.extendPalette('blue', {
+    '500': '#0261a6',
+    'contrastDefaultColor': 'light'
+  });
+
+  // Register the new color palette map with the name <code>neonRed</code>
+  $mdThemingProvider.definePalette('aliBlue', aliBlue);
+
+  // Use that theme for the primary intentions
+  $mdThemingProvider.theme('default')
+    .primaryPalette('aliBlue');
 	
 	// $httpProvider.interceptors.push(function($q, $location){
 	// 	return {

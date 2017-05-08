@@ -1,129 +1,140 @@
  <md-content class="md-padding" layout-xs="column" layout="column">
 	<h1>Register</h1>
-	<md-input-container>
-		<label>Type</label>
-		<md-select ng-model="newUser.type">
-			<md-option value="admin">Admin</md-option>
-			<md-option value="lift_owner">Lift Owner</md-option>
-			<md-option value="inspector">Inspector</md-option>
-		</md-select>
-    </md-input-container>
 
+	 <div layout-gt-xs="row"  layout-align="space-around start">
+		<md-input-container>
+			<label>Type of Account</label>
+			<md-select ng-model="newUser.type">
+				<md-option value="admin">Admin</md-option>
+				<md-option value="lift_owner">Lift Owner</md-option>
+				<md-option value="inspector">Inspector</md-option>
+			</md-select>
+	    </md-input-container>
 
-	<!-- EMAIL -->
-	<md-input-container class="md-block">
-        <label>Email</label>
-        <input required md-no-asterisk name="email" ng-model="newUser.email">
-    </md-input-container>
+		<!-- EMAIL -->
+		<md-input-container class="md-block">
+	        <label>Email</label>
+	        <input required md-no-asterisk name="email" ng-model="newUser.email">
+	    </md-input-container>
+	</div>
 
-	<md-input-container class="md-block">
-        <label>Name</label>
-        <input required md-no-asterisk name="name" ng-model="newUser.name">
-    </md-input-container>
+	 <div layout-gt-xs="row">
+		<md-input-container class="md-block">
+	        <label>Password</label>
+	        <input required md-no-asterisk name="password" ng-model="newUser.password">
+	    </md-input-container>
 
-	<md-input-container class="md-block">
-        <label>Company</label>
-        <input required md-no-asterisk name="company" ng-model="newUser.company">
-    </md-input-container>
+	    <md-input-container class="md-block">
+	        <label>Confirm Password</label>
+	        <input required md-no-asterisk name="password_conf" ng-model="newUser.password_conf">
+	    </md-input-container>
+	</div>
 
-	<md-input-container class="md-block">
-        <label>Password</label>
-        <input required md-no-asterisk name="password" ng-model="newUser.password">
-    </md-input-container>
+	 <div layout-gt-xs="row">
+		<md-input-container class="md-block">
+	        <label>Name</label>
+	        <input required md-no-asterisk name="name" ng-model="newUser.name">
+	    </md-input-container>
 
-    <md-input-container class="md-block">
-        <label>Confirm Password</label>
-        <input required md-no-asterisk name="password_conf" ng-model="newUser.password_conf">
-    </md-input-container>
+		<md-input-container class="md-block">
+	        <label>Company</label>
+	        <input required md-no-asterisk name="company" ng-model="newUser.company">
+	    </md-input-container>
+	</div>
 
-    <md-input-container class="md-block">
-        <label>Address</label>
-        <input required md-no-asterisk name="address" ng-model="newUser.address">
-    </md-input-container>
-	
-	<md-input-container class="md-block">
-        <label>Address 2</label>
-        <input md-no-asterisk name="address2" ng-model="newUser.address2">
-    </md-input-container>
-	
-	<md-input-container class="md-block">
-        <label>City</label>
-        <input required md-no-asterisk name="city" ng-model="newUser.city">
-    </md-input-container>
+	<div layout-gt-xs="row">
+	    <md-input-container class="md-block">
+	        <label>Address</label>
+	        <input required md-no-asterisk name="address" ng-model="newUser.address">
+	    </md-input-container>
+		
+		<md-input-container class="md-block">
+	        <label>Address 2</label>
+	        <input md-no-asterisk name="address2" ng-model="newUser.address2">
+	    </md-input-container>
+	</div>
 
-	<md-input-container>
-		<label>State</label>
-		<md-select ng-model="newUser.state">
-			<md-option value="AL">ALABAMA</md-option>
-			<md-option value="AK">ALASKA</md-option>
-			<md-option value="AZ">ARIZONA</md-option>
-			<md-option value="AR">ARKANSAS</md-option>
-			<md-option value="CA">CALIFORNIA</md-option>
-			<md-option value="CO">COLORADO</md-option>
-			<md-option value="CT">CONNECTICUT</md-option>
-			<md-option value="DE">DELAWARE</md-option>
-			<md-option value="FL">FLORIDA</md-option>
-			<md-option value="GA">GEORGIA</md-option>
-			<md-option value="HI">HAWAII</md-option>
-			<md-option value="ID">IDAHO</md-option>
-			<md-option value="IL">ILLINOIS </md-option>
-			<md-option value="IN">INDIANA</md-option>
-			<md-option value="IA">IOWA</md-option>
-			<md-option value="KS">KANSAS</md-option>
-			<md-option value="KY">KENTUCKY</md-option>
-			<md-option value="LA">LOUISIANA</md-option>
-			<md-option value="ME">MAINE</md-option>
-			<md-option value="MD">MARYLAND</md-option>
-			<md-option value="MA">MASSACHUSETTS</md-option>
-			<md-option value="MI">MICHIGAN</md-option>
-			<md-option value="MN">MINNESOTA</md-option>
-			<md-option value="MS">MISSISSIPPI</md-option>
-			<md-option value="MO">MISSOURI</md-option>
-			<md-option value="MT">MONTANA</md-option>
-			<md-option value="NE">NEBRASKA</md-option>
-			<md-option value="NV">NEVADA</md-option>
-			<md-option value="NH">NEW HAMPSHIRE</md-option>
-			<md-option value="NJ">NEW JERSEY</md-option>
-			<md-option value="NM">NEW MEXICO</md-option>
-			<md-option value="NY">NEW YORK</md-option>
-			<md-option value="NC">NORTH CAROLINA</md-option>
-			<md-option value="ND">NORTH DAKOTA</md-option>
-			<md-option value="OH">OHIO</md-option>
-			<md-option value="OK">OKLAHOMA</md-option>
-			<md-option value="OR">OREGON</md-option>
-			<md-option value="PA">PENNSYLVANIA</md-option>
-			<md-option value="RI">RHODE ISLAND</md-option>
-			<md-option value="SC">SOUTH CAROLINA</md-option>
-			<md-option value="SD">SOUTH DAKOTA</md-option>
-			<md-option value="TN">TENNESSEE</md-option>
-			<md-option value="TX">TEXAS</md-option>
-			<md-option value="UT">UTAH</md-option>
-			<md-option value="VT">VERMONT</md-option>
-			<md-option value="VA">VIRGINIA</md-option>
-			<md-option value="WA">WASHINGTON</md-option>
-			<md-option value="WV">WEST VIRGINIA</md-option>
-			<md-option value="WI">WISCONSIN</md-option>
-			<md-option value="WY">WYOMING</md-option>
-		</md-select>
-    </md-input-container>
+	 <div layout-gt-xs="row">	
+		<md-input-container class="md-block">
+	        <label>City</label>
+	        <input required md-no-asterisk name="city" ng-model="newUser.city">
+	    </md-input-container>
 
-	<md-input-container class="md-block">
-        <label>Zip Code</label>
-        <input required md-no-asterisk name="zip_code" ng-model="newUser.zip_code">
-    </md-input-container>
-	
-	<md-input-container class="md-block">
-        <label>Inspector ID</label>
-        <input md-no-asterisk name="inspector_id" ng-model="newUser.inspector_id">
-    </md-input-container>
+		<md-input-container>
+			<label>State</label>
+			<md-select ng-model="newUser.state">
+				<md-option value="AL">ALABAMA</md-option>
+				<md-option value="AK">ALASKA</md-option>
+				<md-option value="AZ">ARIZONA</md-option>
+				<md-option value="AR">ARKANSAS</md-option>
+				<md-option value="CA">CALIFORNIA</md-option>
+				<md-option value="CO">COLORADO</md-option>
+				<md-option value="CT">CONNECTICUT</md-option>
+				<md-option value="DE">DELAWARE</md-option>
+				<md-option value="FL">FLORIDA</md-option>
+				<md-option value="GA">GEORGIA</md-option>
+				<md-option value="HI">HAWAII</md-option>
+				<md-option value="ID">IDAHO</md-option>
+				<md-option value="IL">ILLINOIS </md-option>
+				<md-option value="IN">INDIANA</md-option>
+				<md-option value="IA">IOWA</md-option>
+				<md-option value="KS">KANSAS</md-option>
+				<md-option value="KY">KENTUCKY</md-option>
+				<md-option value="LA">LOUISIANA</md-option>
+				<md-option value="ME">MAINE</md-option>
+				<md-option value="MD">MARYLAND</md-option>
+				<md-option value="MA">MASSACHUSETTS</md-option>
+				<md-option value="MI">MICHIGAN</md-option>
+				<md-option value="MN">MINNESOTA</md-option>
+				<md-option value="MS">MISSISSIPPI</md-option>
+				<md-option value="MO">MISSOURI</md-option>
+				<md-option value="MT">MONTANA</md-option>
+				<md-option value="NE">NEBRASKA</md-option>
+				<md-option value="NV">NEVADA</md-option>
+				<md-option value="NH">NEW HAMPSHIRE</md-option>
+				<md-option value="NJ">NEW JERSEY</md-option>
+				<md-option value="NM">NEW MEXICO</md-option>
+				<md-option value="NY">NEW YORK</md-option>
+				<md-option value="NC">NORTH CAROLINA</md-option>
+				<md-option value="ND">NORTH DAKOTA</md-option>
+				<md-option value="OH">OHIO</md-option>
+				<md-option value="OK">OKLAHOMA</md-option>
+				<md-option value="OR">OREGON</md-option>
+				<md-option value="PA">PENNSYLVANIA</md-option>
+				<md-option value="RI">RHODE ISLAND</md-option>
+				<md-option value="SC">SOUTH CAROLINA</md-option>
+				<md-option value="SD">SOUTH DAKOTA</md-option>
+				<md-option value="TN">TENNESSEE</md-option>
+				<md-option value="TX">TEXAS</md-option>
+				<md-option value="UT">UTAH</md-option>
+				<md-option value="VT">VERMONT</md-option>
+				<md-option value="VA">VIRGINIA</md-option>
+				<md-option value="WA">WASHINGTON</md-option>
+				<md-option value="WV">WEST VIRGINIA</md-option>
+				<md-option value="WI">WISCONSIN</md-option>
+				<md-option value="WY">WYOMING</md-option>
+			</md-select>
+	    </md-input-container>
+	</div>
+	<div>
+		<md-input-container class="md-block">
+	        <label>Zip Code</label>
+	        <input required md-no-asterisk name="zip_code" ng-model="newUser.zip_code">
+	    </md-input-container>
+	</div>
+	<div layout-gt-xs="row">
+		<md-input-container class="md-block">
+	        <label>Inspector ID</label>
+	        <input md-no-asterisk name="inspector_id" ng-model="newUser.inspector_id">
+	    </md-input-container>
 
-	<md-input-container class="md-block">
-        <label>ALI Certification #</label>
-        <input md-no-asterisk name="ali_certification" ng-model="newUser.ali_certification">
-    </md-input-container>
-
-
-	<md-button class="md-primary md-raised" ng-click="adduser()">Register</md-button>	
-	<a href="#/login">Log In</a>	
-
+		<md-input-container class="md-block">
+	        <label>ALI Certification #</label>
+	        <input md-no-asterisk name="ali_certification" ng-model="newUser.ali_certification">
+	    </md-input-container>
+	</div>
+	<div layout-gt-xs="row">
+		<md-button class="md-primary md-raised" ng-click="adduser()">Register</md-button>	
+		<a href="#/login">Log In</a>	
+	</div>
 </md-content>

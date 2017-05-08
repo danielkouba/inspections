@@ -29,6 +29,7 @@ module.exports = function(app){
     app.get('/inspection', inspections.getInspections);
     app.get('/loggedin', users.loggedin);
     app.get('/user/liftowners', users.getLiftOwners);
+    app.get('/contact', users.emailContact);
     // app.use(loginAuthentication);
     // app.post('/appointment', users.appt);
     // app.get('/appointment', users.allAppts);

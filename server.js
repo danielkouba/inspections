@@ -3,14 +3,15 @@
 ////////////////////////////////////////
 // Import Packages
 ////////////////////////////////////////
-var mongoose = require('mongoose'),
-	express  = require('express'),
-	session  = require('express-session'),
-	bp		 = require('body-parser'),
-	path	 = require('path'),
-	root	 = __dirname,
-	port	 = process.env.PORT || 8000,
-	app		 = express();
+var mongoose 	= require('mongoose'),
+	express  	= require('express'),
+	session  	= require('express-session'),
+	bp		 	= require('body-parser'),
+	path	 	= require('path'),
+	nodemailer  = require('nodemailer'),
+	root	 	= __dirname,
+	port	 	= process.env.PORT || 8000,
+	app		 	= express();
 
 ////////////////////////////////////////
 // Configure Session

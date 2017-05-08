@@ -16,6 +16,9 @@
     "express": "^4.15.2",
     "express-session": "^1.15.2",
     "mongoose": "^4.9.7",
-    "mongoose-unique-validator": "^1.0.5"
+    "mongoose-unique-validator": "^1.0.5",
+    "nodemailer": "^4.0.1",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "xoauth2": "^1.2.0"
   }
 }
