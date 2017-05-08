@@ -37,13 +37,13 @@
 			<div class="nav_logo"></div>
 		</div>
 	 -->
-		<div style="background: url(http://www.autolift.org/wp-content/themes/ali/images/logo.png) center no-repeat; position:absolute; width: 140px; margin: 0 auto; left: 50%; height: 140px; display: block; overflow:hidden; z-index:9999;"></div>
+		<a ng-href="#/"><div style="background: url(http://www.autolift.org/wp-content/themes/ali/images/logo.png) center no-repeat; position:absolute; width: 140px; margin: 0 auto; left: 50%; height: 140px; display: block; overflow:hidden; z-index:9999;"></div></a>
 		<div style="height: 62px; width:100%; background:url(http://www.autolift.org/wp-content/themes/ali/images/blue-top.jpg) center top no-repeat; background-size:cover;">	
 		</div>
 		<div style="background: #c60108;height: 62px;width:100%;"></div>
 
 
-		<div ng-view=""></div>
+		<div ng-view="" layout-gt-xs="row" layout="column" layout-align="space-around center"></div>
 
 		<!-- Bower Components	 -->
 		<script src="/bower_components/angular/angular.js"></script>
