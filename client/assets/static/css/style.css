@@ -1,0 +1,14 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+.nav_logo {
+  height: 48px;
+  width: 150px;
+  display: inline-block;
+  overflow: hidden;
+  background-image: url("/assets/static/img/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
