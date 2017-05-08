@@ -15,13 +15,16 @@ myApp.factory('formFactory', ['$http', function($http){
 	}
 
 	factory.addlift = function(formData, callback){
-		console.log("Made it to the factory with this data");
-		console.log(formData);
 		$http.post('/lift/create', formData).then(function(returned_data){
 			callback(returned_data.data)
 		})
 	}
 
+	factory.getLiftOwners =  function(callback){
+		$http.get('/user/liftowners').then(function(returned_data){
+			callback(returned_data.data)
+		})
+	}
 
 	return factory
 }])

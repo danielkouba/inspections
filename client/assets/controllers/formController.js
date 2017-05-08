@@ -99,7 +99,8 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
 	////////////////////////////////////////
 
 	$scope.formView = function(){
-		// console.log("Hello")
+        // Load clients
+        getLiftOwners()
 	}
 
 	// END Constructors
@@ -143,6 +144,14 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
 
 	}
 
+    var getLiftOwners = function(){
+        formFactory.getLiftOwners(function(data){
+            console.log("Got lift owners here they are:")
+            console.log(data)
+            $scope.lift_owners = data;
+        })
+    }
+
     $scope.addlift = function(){
         console.log($scope.newLift);
         formFactory.addlift($scope.newLift, function(data){
@@ -156,5 +165,36 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
 		//Toggle the expanded state 
   		return !expanded;
 	}
+
+
+    $scope.searchTextChange = function(text) {
+        // console.log('Text changed to ' + text);
+    }
+
+    $scope.selectedOwnerChange = function(item) {
+        console.log('Item changed to ' + item);
+        $scope.formData.lift_owner = item.company;
+        $scope.formData.address = item.address;
+        // $scope.formData.address_cont = item.address_cont;
+        $scope.formData.city = item.city;
+        $scope.formData.state = item.state;
+        $scope.formData.zipcode = item.zip_code;
+        // $scope.formData.phone = item.phone;
+        $scope.formData.email = item.email;
+        $scope.lifts = item._lifts
+    }
+
+
+    $scope.selectedLiftChange = function(item) {
+        console.log('Item changed to ' + item);
+        $scope.formData.lift_manufacturer = item.manufacturer;
+        $scope.formData.lift_model = item.model;
+        $scope.formData.mfg_serial = item.serial;
+        $scope.formData.lift_capacity = item.capacity;
+        $scope.formData.lift_type = item.type;
+
+    }
+
+
 
 });

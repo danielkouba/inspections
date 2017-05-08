@@ -20,8 +20,17 @@ function usersController(){
 	////////////////////////////////////////
 	// Find by type
 	////////////////////////////////////////
-	this.findType = function(req,res){
-		User.find({"type": "lift_owner"}) //.populate('_lifts')
+	this.getLiftOwners = function(req,res){
+		User.find({"type": "lift_owner"}).populate('_lifts').exec(function(err,user){
+			if(!user){
+				console.log("Something went wrong in liftowner query")
+				console.log(err)
+				res.json(err)
+			} else {
+				console.log("We got all lift owners and their lifts");
+				res.json(user);
+			}
+		})
 	}
 
 
