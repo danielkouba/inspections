@@ -44,7 +44,27 @@ myApp.factory('userFactory', ['$http', function($http){
 	// END Get Users Inspections
 	////////////////////////////////////////
 
+	////////////////////////////////////////
+	// Forgot Password
+	factory.forgotPassword = function(user, callback){
+		$http.post('/user/forgotPassword', user).then(function(returned_data){
+			callback(returned_data);
+		})
+	}
 
+	// Forgot Password
+	////////////////////////////////////////
+
+	////////////////////////////////////////
+	// Change Password
+	factory.changePassword = function(user, callback){
+		$http.post('/user/changepassword', user).then(function(returned_data){
+			callback(returned_data.data);
+		})
+	}
+
+	// Change Password
+	////////////////////////////////////////
 
 	////////////////////////////////////////
 	// Get Users Lifts

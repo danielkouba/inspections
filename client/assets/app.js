@@ -74,6 +74,16 @@ myApp.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemin
 		controller: 'formController',
 		controllerAs: 'FC'
 	})
+	.when('/passwordrecovery', {
+		templateUrl: 'assets/partials/forgotPassword.html',
+		controller: 'userController',
+		controllerAs: 'UC'
+	})
+	.when('/passwordchange', {
+		templateUrl: 'assets/partials/changePassword.html',
+		controller: 'userController',
+		controllerAs: 'UC'
+	})
 	.otherwise({
 		redirectTo: '/'
 	})

@@ -20,6 +20,7 @@ var userSchema = new mongoose.Schema({
 	type: 	  			{type: String, required: true, trim: true},
 	inspector_id: 		{type: String, trim: true},
 	ali_certification: 	{type: String, trim: true},
+	resetPassword: 		{type: Boolean, default: false},
 	_inspections:      [{type: Schema.Types.ObjectId, ref: 'Inspection'}],
 	_lifts:      [{type: Schema.Types.ObjectId, ref: 'Lift'}],
 	_customers: 	   [{type: Schema.Types.ObjectId, ref: 'User'}]

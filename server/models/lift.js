@@ -10,7 +10,7 @@ var uniqueValidator = require('mongoose-unique-validator');
 
 var liftSchema = new mongoose.Schema({
 	model:     			{type: String, trim: true},
-	serial:     			{type: String, trim: true},
+	serial:     		{type: String, trim: true},
 	type: 	  			{type: String, trim: true},
 	capacity: 	  		{type: String, trim: true},
 	manufacturer: 	  	{type: String, trim: true},

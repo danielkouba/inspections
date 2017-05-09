@@ -23,14 +23,7 @@ function inspectionsController(){
 	////////////////////////////////////////
 	// Create Route
 	this.create = function(req,res){
-		console.log("Made it to lift controller with this data");
-		console.log(req.body)
-		console.log(req.session.user)
 		Lift.create(req.body, function(err,lift){
-			console.log("Creating LIFT VVVVVVV")
-			console.log(err)
-			console.log(lift)
-			console.log("Creating LIFT VVVVVVV")
 			if(err){
 				res.json(err)
 			} else {
@@ -62,19 +55,13 @@ function inspectionsController(){
 
 
 	this.getUserLifts = function(req,res){
-		console.log(req.session.user)
 		if (!req.session.user){
 			res.json({'errors' : 'Please log in to see this info'})
 		} else {
 			User.findOne({"_id":req.session.user._id}).populate('_lifts').exec(function(err,user){
 				var errors =  {'errors' : 'Please log in to see this info'};
-				console.log("THIS IS FROM GET LIFTSVVVVV");
-				console.log(req.session.user._id);
-				console.log(user);
-				console.log("THIS IS FROM GET LIFTS^^^^");
 				if (!user){
 					console.log("There was something wrong with the query");
-					console.log(err);
 					res.json(errors);
 				} else {
 					//Save session user

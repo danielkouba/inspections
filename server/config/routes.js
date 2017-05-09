@@ -29,6 +29,8 @@ module.exports = function(app){
     app.get('/inspection', inspections.getInspections);
     app.get('/loggedin', users.loggedin);
     app.get('/user/liftowners', users.getLiftOwners);
+    app.post('/user/forgotpassword', users.recoverPassword);
+    app.post('/user/changepassword', users.changePassword);
     app.get('/contact', users.emailContact);
     // app.use(loginAuthentication);
     // app.post('/appointment', users.appt);
