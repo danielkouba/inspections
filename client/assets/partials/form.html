@@ -1,550 +1,558 @@
+<div layout-align="start center" layout="column" layout-fill >
+    <!-- FORM STEPPER -->
 
-<!-- FORM STEPPER -->
+    <md-stepper id="stepper-demo" 
+            md-mobile-step-text="$ctrl.isMobileStepText" 
+            md-vertical="$ctrl.isVertical" 
+            md-linear="$ctrl.isLinear"
+            md-alternative="$ctrl.isAlternative"
+            ng-init="formView()"
+            style="width:60%">
+        
+            <!-- FIRST FORM STEP -->
 
-<md-stepper id="stepper-demo" 
-        md-mobile-step-text="$ctrl.isMobileStepText" 
-        md-vertical="$ctrl.isVertical" 
-        md-linear="$ctrl.isLinear"
-        md-alternative="$ctrl.isAlternative"
-        ng-init="formView()">
-    
-        <!-- FIRST FORM STEP -->
-
-        <md-step md-label="Appendix A">
-            <md-step-body>
-                <md-content class="md-padding" layout-xs="column" layout="column">
-                <p>Appendix A</p>
-                <!-- SELECT Business AutoComplete -->
-                <md-autocomplete
-                  ng-disabled="formData.isDisabled"
-                  md-no-cache="formData.noCache"
-                  md-selected-item="formData.selectedItem"
-                  md-search-text-change="searchTextChange(formData.searchText)"
-                  md-search-text="formData.searchText"
-                  md-selected-item-change="selectedOwnerChange(owner)"
-                  md-items="owner in lift_owners"
-                  md-item-text="owner.company"
-                  md-min-length="0"
-                  placeholder="Choose a business">
-                <md-item-template>
-                  <span md-highlight-text="formData.searchText" md-highlight-flags="^i">{{owner.company}}</span>
-                </md-item-template>
-                <md-not-found>
-                  No states matching "{{formData.searchText}}" were found.
-                  <a ng-click="formData.newState(formData.searchText)">Create a new one!</a>
-                </md-not-found>
-              </md-autocomplete>
-
-                <md-input-container class="md-block">
-                    <label>Lift Owner</label>
-                    <input required md-no-asterisk name="lift_owner" ng-model="formData.lift_owner">
-                </md-input-container>
-    
-                <md-input-container class="md-block">
-                    <label>Address</label>
-                    <input required md-no-asterisk name="address" ng-model="formData.address">
-                </md-input-container>
-
-                <md-input-container class="md-block">
-                    <label>Address continued</label>
-                    <input md-no-asterisk name="address_cont" ng-model="formData.address_cont">
-                </md-input-container>
-
-                <md-input-container class="md-block">
-                    <label>City</label>
-                    <input required md-no-asterisk name="city" ng-model="formData.city">
-                </md-input-container>
-
-                <md-input-container>
-                  <label>State</label>
-                  <md-select ng-model="formData.state">
-                    <!-- <option class="default-option" value="" selected data-default>State</option> -->
-                    <md-option value="AL">ALABAMA</md-option>
-                    <md-option value="AK">ALASKA</md-option>
-                    <md-option value="AZ">ARIZONA</md-option>
-                    <md-option value="AR">ARKANSAS</md-option>
-                    <md-option value="CA">CALIFORNIA</md-option>
-                    <md-option value="CO">COLORADO</md-option>
-                    <md-option value="CT">CONNECTICUT</md-option>
-                    <md-option value="DE">DELAWARE</md-option>
-                    <md-option value="FL">FLORIDA</md-option>
-                    <md-option value="GA">GEORGIA</md-option>
-                    <md-option value="HI">HAWAII</md-option>
-                    <md-option value="ID">IDAHO</md-option>
-                    <md-option value="IL">ILLINOIS </md-option>
-                    <md-option value="IN">INDIANA</md-option>
-                    <md-option value="IA">IOWA</md-option>
-                    <md-option value="KS">KANSAS</md-option>
-                    <md-option value="KY">KENTUCKY</md-option>
-                    <md-option value="LA">LOUISIANA</md-option>
-                    <md-option value="ME">MAINE</md-option>
-                    <md-option value="MD">MARYLAND</md-option>
-                    <md-option value="MA">MASSACHUSETTS</md-option>
-                    <md-option value="MI">MICHIGAN</md-option>
-                    <md-option value="MN">MINNESOTA</md-option>
-                    <md-option value="MS">MISSISSIPPI</md-option>
-                    <md-option value="MO">MISSOURI</md-option>
-                    <md-option value="MT">MONTANA</md-option>
-                    <md-option value="NE">NEBRASKA</md-option>
-                    <md-option value="NV">NEVADA</md-option>
-                    <md-option value="NH">NEW HAMPSHIRE</md-option>
-                    <md-option value="NJ">NEW JERSEY</md-option>
-                    <md-option value="NM">NEW MEXICO</md-option>
-                    <md-option value="NY">NEW YORK</md-option>
-                    <md-option value="NC">NORTH CAROLINA</md-option>
-                    <md-option value="ND">NORTH DAKOTA</md-option>
-                    <md-option value="OH">OHIO</md-option>
-                    <md-option value="OK">OKLAHOMA</md-option>
-                    <md-option value="OR">OREGON</md-option>
-                    <md-option value="PA">PENNSYLVANIA</md-option>
-                    <md-option value="RI">RHODE ISLAND</md-option>
-                    <md-option value="SC">SOUTH CAROLINA</md-option>
-                    <md-option value="SD">SOUTH DAKOTA</md-option>
-                    <md-option value="TN">TENNESSEE</md-option>
-                    <md-option value="TX">TEXAS</md-option>
-                    <md-option value="UT">UTAH</md-option>
-                    <md-option value="VT">VERMONT</md-option>
-                    <md-option value="VA">VIRGINIA</md-option>
-                    <md-option value="WA">WASHINGTON</md-option>
-                    <md-option value="WV">WEST VIRGINIA</md-option>
-                    <md-option value="WI">WISCONSIN</md-option>
-                    <md-option value="WY">WYOMING</md-option>
-                </md-select>
-                </md-input-container>
-
-                <md-input-container class="md-block">
-                    <label>Zip</label>
-                    <input required md-no-asterisk name="zip" ng-model="formData.zipcode">
-                </md-input-container>
-                
-                <md-input-container class="md-block">
-                    <label>Phone</label>
-                    <input required md-no-asterisk name="phone" ng-model="formData.phone">
-                </md-input-container>
-
-                <md-input-container class="md-block">
-                    <label>Fax</label>
-                    <input md-no-asterisk name="fax" ng-model="formData.fax">
-                </md-input-container>
-                
-                <md-input-container class="md-block">
-                    <label>Email</label>
-                    <input required md-no-asterisk name="email" ng-model="formData.email">
-                </md-input-container>
-
-                
-                <md-input-container class="md-block">
-                    <label>Operator</label>
-                    <input required md-no-asterisk name="operator" ng-model="formData.operator">
-                </md-input-container>
-
-                
-                <md-input-container class="md-block">
-                    <label>Employee ID #</label>
-                    <input required md-no-asterisk name="employee_id" ng-model="formData.employee_id">
-                </md-input-container>
-
-                <!-- SELECT Lift AutoComplete -->
-
-                <md-autocomplete
-                  ng-disabled="formData.isDisabled"
-                  md-no-cache="formData.noCache"
-                  md-selected-item="formData.selectedLift"
-                  md-search-text-change="searchTextChange(formData.searchLift)"
-                  md-search-text="formData.searchLift"
-                  md-selected-item-change="selectedLiftChange(lift)"
-                  md-items="lift in lifts"
-                  md-item-text="lift.model"
-                  md-min-length="0"
-                  placeholder="Choose an existing lift">
-                <md-item-template>
-                  <span md-highlight-text="formData.searchLift" md-highlight-flags="^i">{{lift.model}}</span>
-                </md-item-template>
-                <md-not-found>
-                  No states matching "{{formData.searchLift}}" were found.
-                  <a ng-click="formData.newState(formData.searchLift)">Create a new one!</a>
-                </md-not-found>
-              </md-autocomplete>
-
-                <md-input-container class="md-block">
-                    <label>Lift Manufacturer</label>
-                    <input required md-no-asterisk name="lift_manufacturer" ng-model="formData.lift_manufacturer">
-                </md-input-container>
-
-                <md-input-container class="md-block">
-                    <label>Lift Model</label>
-                    <input required md-no-asterisk name="lift_model" ng-model="formData.lift_model">
-                </md-input-container>
-                
-                <md-input-container class="md-block">
-                    <label>Lift Manufacturer Serial No.</label>
-                    <input required md-no-asterisk name="mfg_serial" ng-model="formData.mfg_serial">
-                </md-input-container>
-                </md-content>
-            </md-step-body>
-            <md-step-actions>
-                <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
-                <md-button class="md-primary" ng-click="$ctrl.cancel();">Cancel</md-button>
-            </md-step-actions>
-        </md-step>
-
-
-
-        <!-- SECOND FORM STEP -->
-        <md-step md-label="Appendix B">
-            <md-step-body>
-
-                <md-content class="md-padding" layout-xs="column" layout="column">
-                    <p>Appendix B</p>
+            <md-step md-label="Appendix A">
+                <md-step-body>
+                    <md-content class="md-padding" layout-xs="column" layout="column">
+                    <p>Appendix A</p>
+                    <!-- SELECT Business AutoComplete -->
+                    <md-autocomplete
+                      ng-disabled="formData.isDisabled"
+                      md-no-cache="formData.noCache"
+                      md-selected-item="formData.selectedItem"
+                      md-search-text-change="searchTextChange(formData.searchText)"
+                      md-search-text="formData.searchText"
+                      md-selected-item-change="selectedOwnerChange(owner)"
+                      md-items="owner in lift_owners"
+                      md-item-text="owner.company"
+                      md-min-length="0"
+                      placeholder="Choose a business">
+                    <md-item-template>
+                      <span md-highlight-text="formData.searchText" md-highlight-flags="^i">{{owner.company}}</span>    
+                    </md-item-template>
+                    <md-not-found>
+                      No states matching "{{formData.searchText}}" were found.
+                      <a ng-click="formData.newState(formData.searchText)">Create a new one!</a>
+                    </md-not-found>
+                  </md-autocomplete>
 
                     <md-input-container class="md-block">
-                        <label>Lift Capacity</label>
-                        <input required md-no-asterisk name="lift_capacity" ng-model="formData.lift_capacity">
+                        <label>Lift Owner</label>
+                        <input required md-no-asterisk name="lift_owner" ng-model="formData.lift_owner">
+                    </md-input-container>
+        
+                    <md-input-container class="md-block">
+                        <label>Address</label>
+                        <input required md-no-asterisk name="address" ng-model="formData.address">
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>Address continued</label>
+                        <input md-no-asterisk name="address_cont" ng-model="formData.address_cont">
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>City</label>
+                        <input required md-no-asterisk name="city" ng-model="formData.city">
+                    </md-input-container>
+
+                    <md-input-container>
+                      <label>State</label>
+                      <md-select ng-model="formData.state">
+                        <!-- <option class="default-option" value="" selected data-default>State</option> -->
+                        <md-option value="AL">ALABAMA</md-option>
+                        <md-option value="AK">ALASKA</md-option>
+                        <md-option value="AZ">ARIZONA</md-option>
+                        <md-option value="AR">ARKANSAS</md-option>
+                        <md-option value="CA">CALIFORNIA</md-option>
+                        <md-option value="CO">COLORADO</md-option>
+                        <md-option value="CT">CONNECTICUT</md-option>
+                        <md-option value="DE">DELAWARE</md-option>
+                        <md-option value="FL">FLORIDA</md-option>
+                        <md-option value="GA">GEORGIA</md-option>
+                        <md-option value="HI">HAWAII</md-option>
+                        <md-option value="ID">IDAHO</md-option>
+                        <md-option value="IL">ILLINOIS </md-option>
+                        <md-option value="IN">INDIANA</md-option>
+                        <md-option value="IA">IOWA</md-option>
+                        <md-option value="KS">KANSAS</md-option>
+                        <md-option value="KY">KENTUCKY</md-option>
+                        <md-option value="LA">LOUISIANA</md-option>
+                        <md-option value="ME">MAINE</md-option>
+                        <md-option value="MD">MARYLAND</md-option>
+                        <md-option value="MA">MASSACHUSETTS</md-option>
+                        <md-option value="MI">MICHIGAN</md-option>
+                        <md-option value="MN">MINNESOTA</md-option>
+                        <md-option value="MS">MISSISSIPPI</md-option>
+                        <md-option value="MO">MISSOURI</md-option>
+                        <md-option value="MT">MONTANA</md-option>
+                        <md-option value="NE">NEBRASKA</md-option>
+                        <md-option value="NV">NEVADA</md-option>
+                        <md-option value="NH">NEW HAMPSHIRE</md-option>
+                        <md-option value="NJ">NEW JERSEY</md-option>
+                        <md-option value="NM">NEW MEXICO</md-option>
+                        <md-option value="NY">NEW YORK</md-option>
+                        <md-option value="NC">NORTH CAROLINA</md-option>
+                        <md-option value="ND">NORTH DAKOTA</md-option>
+                        <md-option value="OH">OHIO</md-option>
+                        <md-option value="OK">OKLAHOMA</md-option>
+                        <md-option value="OR">OREGON</md-option>
+                        <md-option value="PA">PENNSYLVANIA</md-option>
+                        <md-option value="RI">RHODE ISLAND</md-option>
+                        <md-option value="SC">SOUTH CAROLINA</md-option>
+                        <md-option value="SD">SOUTH DAKOTA</md-option>
+                        <md-option value="TN">TENNESSEE</md-option>
+                        <md-option value="TX">TEXAS</md-option>
+                        <md-option value="UT">UTAH</md-option>
+                        <md-option value="VT">VERMONT</md-option>
+                        <md-option value="VA">VIRGINIA</md-option>
+                        <md-option value="WA">WASHINGTON</md-option>
+                        <md-option value="WV">WEST VIRGINIA</md-option>
+                        <md-option value="WI">WISCONSIN</md-option>
+                        <md-option value="WY">WYOMING</md-option>
+                    </md-select>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>Zip</label>
+                        <input required md-no-asterisk name="zip" ng-model="formData.zipcode">
                     </md-input-container>
                     
                     <md-input-container class="md-block">
-                        <label>Is this lift certified?</label>
-                        <input required md-no-asterisk name="certified" ng-model="formData.lift_certified">
-                    </md-input-container>
-                    
-                    <md-input-container class="md-block">
-                        <label>ALI Certification #</label>
-                        <input required md-no-asterisk name="ali_certification" ng-model="formData.ali_certification">
-                    </md-input-container>
-                    
-                    <md-input-container class="md-block">
-                        <label>Lift Type</label>
-                        <input required md-no-asterisk name="lift_type" ng-model="formData.lift_type">
+                        <label>Phone</label>
+                        <input required md-no-asterisk name="phone" ng-model="formData.phone">
                     </md-input-container>
 
                     <md-input-container class="md-block">
-                        <label>Lift Design</label>
-                        <input required md-no-asterisk name="lift_design" ng-model="formData.lift_design">
+                        <label>Fax</label>
+                        <input md-no-asterisk name="fax" ng-model="formData.fax">
                     </md-input-container>
-
-                    <p>I certify that I meet the requirements of ANSI/All ALOIM:2008 paragraph 5.2 for qualified lift inspector and that I have successfully completed the training for qualified lift inspector as described in ANSI/All ALOIM:2008 paragraph 5.3</p>
                     
                     <md-input-container class="md-block">
-                        <label>Certified Inspector</label>
-                        <input required md-no-asterisk name="inspector_certified" ng-model="formData.inspector_certified">
+                        <label>Email</label>
+                        <input required md-no-asterisk name="email" ng-model="formData.email">
                     </md-input-container>
+
+                    
+                    <md-input-container class="md-block">
+                        <label>Operator</label>
+                        <input required md-no-asterisk name="operator" ng-model="formData.operator">
+                    </md-input-container>
+
+                    
+                    <md-input-container class="md-block">
+                        <label>Employee ID #</label>
+                        <input required md-no-asterisk name="employee_id" ng-model="formData.employee_id">
+                    </md-input-container>
+
+                    <!-- SELECT Lift AutoComplete -->
+
+                    <md-autocomplete
+                      ng-disabled="formData.isDisabled"
+                      md-no-cache="formData.noCache"
+                      md-selected-item="formData.selectedLift"
+                      md-search-text-change="searchTextChange(formData.searchLift)"
+                      md-search-text="formData.searchLift"
+                      md-selected-item-change="selectedLiftChange(lift)"
+                      md-items="lift in lifts"
+                      md-item-text="lift.model"
+                      md-min-length="0"
+                      placeholder="Choose an existing lift">
+                    <md-item-template>
+                      <span md-highlight-text="formData.searchLift" md-highlight-flags="^i">{{lift.model}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                      No states matching "{{formData.searchLift}}" were found.
+                      <a ng-click="formData.newState(formData.searchLift)">Create a new one!</a>
+                    </md-not-found>
+                  </md-autocomplete>
+
+                    <md-input-container class="md-block">
+                        <label>Lift Manufacturer</label>
+                        <input required md-no-asterisk name="lift_manufacturer" ng-model="formData.lift_manufacturer">
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>Lift Model</label>
+                        <input required md-no-asterisk name="lift_model" ng-model="formData.lift_model">
+                    </md-input-container>
+                    
+                    <md-input-container class="md-block">
+                        <label>Lift Manufacturer Serial No.</label>
+                        <input required md-no-asterisk name="mfg_serial" ng-model="formData.mfg_serial">
+                    </md-input-container>
+                    </md-content>
+                </md-step-body>
+                <md-step-actions>
+                    <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
+                    <md-button class="md-primary" ng-click="$ctrl.cancel();">Cancel</md-button>
+                </md-step-actions>
+            </md-step>
+
+
+
+            <!-- SECOND FORM STEP -->
+            <md-step md-label="Appendix B">
+                <md-step-body layout="column">
+
+                    <md-content class="md-padding" layout-xs="column" layout="column" >
+                        <p>Appendix B</p>
+
+                        <md-input-container class="md-block">
+                            <label>Lift Capacity</label>
+                            <input required md-no-asterisk name="lift_capacity" ng-model="formData.lift_capacity">
+                        </md-input-container>
                         
-                    <md-input-container class="md-block">
-                        <label>Inspector Name</label>
-                        <input required md-no-asterisk name="inspector_name" ng-model="formData.inspector_name">
-                    </md-input-container>
-
-                    <md-input-container class="md-block">
-                        <label>Inspector ID</label>
-                        <input required md-no-asterisk name="inspector_id" ng-model="formData.inspector_id">
-                    </md-input-container>
-
-                    <md-input-container class="md-block">
-                        <label>Inspection Date</label>
-                        <input required md-no-asterisk name="inspection_date" ng-model="formData.inspection_date">
-                    </md-input-container>
-
-
-                </md-content>
-
-            </md-step-body>
-            <!-- SECOND STEP ACTIONS -->
-            <md-step-actions>
-                <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
-                <md-button class="md-primary" ng-click="$ctrl.previousStep();">Back</md-button>
-            </md-step-actions>
-        </md-step>
-
-
-
-        <!-- THIRD FORM STEP  -->
-
-
-        <md-step md-label="Appendix C">
-            <md-step-body>
-
-                <md-content class="md-padding" layout-xs="column" layout="column">
-                <p>Appendix C</p>
-                  <!-- This table uses this dependency https://github.com/daniel-nagy/md-data-table   -->
-                  <md-table-container>
-                    <table md-table>
-                      <thead md-head>
-                        <tr md-row>
-                          <th md-column><span>Subject</span></th>
-                          <th md-column md-numeric>Pass</th>
-                          <th md-column md-numeric>Fail</th>
-                          <th md-column md-numeric>Notes</th>
-                          <th md-column md-numeric>Camera</th>
-                        </tr>
-                      </thead>
-                      <tbody md-body>
+                        <md-input-container class="md-block">
+                            <label>Is this lift certified?</label>
+                            <input required md-no-asterisk name="certified" ng-model="formData.lift_certified">
+                        </md-input-container>
                         
-                        <tr md-row ng-repeat-start="item in appendix.c" data-ng-init="item.expanded = true">
+                        <md-input-container class="md-block">
+                            <label>ALI Certification #</label>
+                            <input required md-no-asterisk name="ali_certification" ng-model="formData.ali_certification">
+                        </md-input-container>
+                        
+                        <md-input-container class="md-block">
+                            <label>Lift Type</label>
+                            <input required md-no-asterisk name="lift_type" ng-model="formData.lift_type">
+                        </md-input-container>
 
-                            <!-- Subject -->
-                            <td md-cell>{{item.subject}}</td>
-                            <!-- Pass -->
-                            <td md-cell>
-                                <md-radio-group ng-model="formData[item.key].pass">
-                                    <md-radio-button value="pass" name="{{item.key}}" aria-label="pass"></md-radio-button>
-                                </md-radio-group>
-                            </td>
-                            <!-- Fail -->
-                            <td md-cell>
-                                <md-radio-group ng-model="formData[item.key].pass">
-                                    <md-radio-button value="fail" name="{{item.key}}" class="md-warn" aria-label="fail"></md-radio-button>
-                                </md-radio-group>
-                            </td>
-                            <!-- Make note -->
-                            <td md-cell>
+                        <md-input-container class="md-block">
+                            <label>Lift Design</label>
+                            <input required md-no-asterisk name="lift_design" ng-model="formData.lift_design">
+                        </md-input-container>
+
+                        <p>I certify that I meet the requirements of ANSI/All ALOIM:2008 paragraph 5.2 for qualified lift inspector and that I have successfully completed the training for qualified lift inspector as described in ANSI/All ALOIM:2008 paragraph 5.3</p>
+                        
+                        <md-input-container class="md-block">
+                            <label>Certified Inspector</label>
+                            <input required md-no-asterisk name="inspector_certified" ng-model="formData.inspector_certified">
+                        </md-input-container>
+                            
+                        <md-input-container class="md-block">
+                            <label>Inspector Name</label>
+                            <input required md-no-asterisk name="inspector_name" ng-model="formData.inspector_name">
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Inspector ID</label>
+                            <input required md-no-asterisk name="inspector_id" ng-model="formData.inspector_id">
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Inspection Date</label>
+                            <input required md-no-asterisk name="inspection_date" ng-model="formData.inspection_date">
+                        </md-input-container>
+
+
+                    </md-content>
+
+                </md-step-body>
+                <!-- SECOND STEP ACTIONS -->
+                <md-step-actions>
+                    <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
+                    <md-button class="md-primary" ng-click="$ctrl.previousStep();">Back</md-button>
+                </md-step-actions>
+            </md-step>
+
+
+
+            <!-- THIRD FORM STEP  -->
+
+
+            <md-step md-label="Appendix C">
+                <md-step-body>
+
+                    <md-content class="md-padding" layout-xs="column" layout="column" flex="66">
+                    <p>Appendix C</p>
+                      <!-- This table uses this dependency https://github.com/daniel-nagy/md-data-table   -->
+                      <md-table-container>
+                        <table md-table>
+                          <thead md-head>
+                            <tr md-row>
+                              <th md-column><span>Subject</span></th>
+                              <th md-column md-numeric>Pass</th>
+                              <th md-column md-numeric>Fail</th>
+                              <th md-column md-numeric>Notes</th>
+                              <th md-column md-numeric>Camera</th>
+                            </tr>
+                          </thead>
+                          <tbody md-body>
+                            
+                            <tr md-row ng-repeat-start="item in appendix.c" data-ng-init="item.expanded = true">
+
+                                <!-- Subject -->
+                                <td md-cell>{{item.subject}}</td>
+                                <!-- Pass -->
+                                <td md-cell>
+                                    <md-radio-group ng-model="formData[item.key].pass">
+                                        <md-radio-button value="pass" name="{{item.key}}" aria-label="pass"></md-radio-button>
+                                    </md-radio-group>
+                                </td>
+                                <!-- Fail -->
+                                <td md-cell>
+                                    <md-radio-group ng-model="formData[item.key].pass">
+                                        <md-radio-button value="fail" name="{{item.key}}" class="md-warn" aria-label="fail"></md-radio-button>
+                                    </md-radio-group>
+                                </td>
+                                <!-- Make note -->
+                                <td md-cell>
+                                    <md-button class="md-fab md-mini md-primary" ng-click="item.expanded = toggleExpanded(item.expanded, $event)" aria-label="photos">
+                                        <md-icon ng-if="item.expanded" class="material-icons">assignment</md-icon>
+                                        <md-icon ng-if="!item.expanded" class="material-icons">change_history</md-icon>
+                                    </md-button>
+                                </td>
+                                <!-- Take Picture -->
+                                <td md-cell>
+                                    <md-button class="md-fab md-mini md-primary" ng-click="" aria-label="photos">
+                                        <md-icon class="material-icons">camera_alt</md-icon>
+                                    </md-button>  
+                                </td>
+                            </tr>
+                            <tr ng-if="item.images.length > 0" md-row ng-show="!item.expanded" ng-repeat-end="">
+                              <td md-cell colspan="7">             
+                                    <md-grid-list md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3">
+                                        <md-grid-tile class="thumb" ng-repeat="image in item.images" style="background-image:'url('https://s3-us-west-1.amazonaws.com/liftspec/' + image + ')'">
+                                            <img src="https://s3-us-west-1.amazonaws.com/liftspec/{{image}}" alt="">
+
+                                        </md-grid-tile>
+                                    </md-grid-list>       
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </md-table-container>
+                    </md-content>
+
+                </md-step-body>
+                <!--  THIRD STEP ACTIONS -->
+                <md-step-actions>
+                    <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
+                    <md-button class="md-primary" ng-click="$ctrl.previousStep();">Back</md-button>
+                </md-step-actions>
+            </md-step>
+
+
+            <!-- FOURTH FORM STEP -->
+            <md-step md-label="Appendix D">
+                <md-step-body>
+                    <md-content class="md-padding" layout-xs="column" layout="column">
+                    <p>Appendix D</p>
+                    <!-- This table uses this dependency https://github.com/daniel-nagy/md-data-table   -->
+                      <md-table-container>
+                        <table md-table>
+                          <thead md-head>
+                            <tr md-row>
+                              <th md-column><span>Subject</span></th>
+                              <th md-column md-numeric>Pass</th>
+                              <th md-column md-numeric>Fail</th>
+                              <th md-column md-numeric>Notes</th>
+                              <th md-column md-numeric>Camera</th>
+                            </tr>
+                          </thead>
+                          <tbody md-body>
+                            <tr md-row ng-repeat-start="item in appendix.d" data-ng-init="item.expanded = true">
+                              <td md-cell>{{item.subject}}</td>
+                                <td md-cell>
+                                    <md-radio-group ng-model="formData[item.key].pass">
+                                        <md-radio-button value="pass" name="{{item.key}}" aria-label="pass"></md-radio-button>
+                                    </md-radio-group>
+                                </td>
+                                <td md-cell>
+                                    <md-radio-group ng-model="formData[item.key].pass">
+                                        <md-radio-button value="fail" name="{{item.key}}" class="md-warn" aria-label="fail"></md-radio-button>
+                                    </md-radio-group>
+                                </td>
+                              <td md-cell>
                                 <md-button class="md-fab md-mini md-primary" ng-click="item.expanded = toggleExpanded(item.expanded, $event)" aria-label="photos">
-                                    <md-icon ng-if="item.expanded" class="material-icons">assignment</md-icon>
-                                    <md-icon ng-if="!item.expanded" class="material-icons">change_history</md-icon>
+                                  <md-icon ng-if="item.expanded" class="material-icons">assignment</md-icon>
+                                  <md-icon ng-if="!item.expanded" class="material-icons">change_history</md-icon>
                                 </md-button>
-                            </td>
-                            <!-- Take Picture -->
-                            <td md-cell>
+                              </td>
+                              <td md-cell>
                                 <md-button class="md-fab md-mini md-primary" ng-click="" aria-label="photos">
                                     <md-icon class="material-icons">camera_alt</md-icon>
                                 </md-button>  
-                            </td>
-                        </tr>
-                        <tr ng-if="item.images.length > 0" md-row ng-show="!item.expanded" ng-repeat-end="">
-                          <td md-cell colspan="7">             
-                                <md-grid-list md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3">
-                                    <md-grid-tile class="thumb" ng-repeat="image in item.images" style="background-image:'url('https://s3-us-west-1.amazonaws.com/liftspec/' + image + ')'">
+                              </td>
+
+                            </tr>
+                            <tr ng-if="item.images.length > 0" md-row ng-show="!item.expanded" ng-repeat-end="">
+                              <td md-cell colspan="7">
+                                                   
+                                    <md-grid-list md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3">
+                                      <md-grid-tile class="thumb" ng-repeat="image in item.images" style="background-image:'url('https://s3-us-west-1.amazonaws.com/liftspec/' + image + ')'">
                                         <img src="https://s3-us-west-1.amazonaws.com/liftspec/{{image}}" alt="">
 
-                                    </md-grid-tile>
-                                </md-grid-list>       
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </md-table-container>
-                </md-content>
+                                      </md-grid-tile>
+                                    </md-grid-list>       
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </md-table-container>
+                    </md-content>
 
-            </md-step-body>
-            <!--  THIRD STEP ACTIONS -->
-            <md-step-actions>
+                </md-step-body>
+                <md-step-actions>
                 <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
-                <md-button class="md-primary" ng-click="$ctrl.previousStep();">Back</md-button>
-            </md-step-actions>
-        </md-step>
+                    <md-button class="md-primary" ng-click="previousPage()">Back</md-button>
+                </md-step-actions>
+            </md-step>
+            <!-- Other steps if needed ... -->
 
+            <md-step md-label="Review and Submit">
+                <md-step-body>
 
-        <!-- FOURTH FORM STEP -->
-        <md-step md-label="Appendix D">
-            <md-step-body>
-                <md-content class="md-padding" layout-xs="column" layout="column">
-                <p>Appendix D</p>
-                <!-- This table uses this dependency https://github.com/daniel-nagy/md-data-table   -->
-                  <md-table-container>
-                    <table md-table>
-                      <thead md-head>
-                        <tr md-row>
-                          <th md-column><span>Subject</span></th>
-                          <th md-column md-numeric>Pass</th>
-                          <th md-column md-numeric>Fail</th>
-                          <th md-column md-numeric>Notes</th>
-                          <th md-column md-numeric>Camera</th>
-                        </tr>
-                      </thead>
-                      <tbody md-body>
-                        <tr md-row ng-repeat-start="item in appendix.d" data-ng-init="item.expanded = true">
-                          <td md-cell>{{item.subject}}</td>
-                            <td md-cell>
-                                <md-radio-group ng-model="formData[item.key].pass">
-                                    <md-radio-button value="pass" name="{{item.key}}" aria-label="pass"></md-radio-button>
-                                </md-radio-group>
-                            </td>
-                            <td md-cell>
-                                <md-radio-group ng-model="formData[item.key].pass">
-                                    <md-radio-button value="fail" name="{{item.key}}" class="md-warn" aria-label="fail"></md-radio-button>
-                                </md-radio-group>
-                            </td>
-                          <td md-cell>
-                            <md-button class="md-fab md-mini md-primary" ng-click="item.expanded = toggleExpanded(item.expanded, $event)" aria-label="photos">
-                              <md-icon ng-if="item.expanded" class="material-icons">assignment</md-icon>
-                              <md-icon ng-if="!item.expanded" class="material-icons">change_history</md-icon>
-                            </md-button>
-                          </td>
-                          <td md-cell>
-                            <md-button class="md-fab md-mini md-primary" ng-click="" aria-label="photos">
-                                <md-icon class="material-icons">camera_alt</md-icon>
-                            </md-button>  
-                          </td>
-
-                        </tr>
-                        <tr ng-if="item.images.length > 0" md-row ng-show="!item.expanded" ng-repeat-end="">
-                          <td md-cell colspan="7">
-                                               
-                                <md-grid-list md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3">
-                                  <md-grid-tile class="thumb" ng-repeat="image in item.images" style="background-image:'url('https://s3-us-west-1.amazonaws.com/liftspec/' + image + ')'">
-                                    <img src="https://s3-us-west-1.amazonaws.com/liftspec/{{image}}" alt="">
-
-                                  </md-grid-tile>
-                                </md-grid-list>       
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </md-table-container>
-                </md-content>
-
-            </md-step-body>
-            <md-step-actions>
-            <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
-                <md-button class="md-primary" ng-click="previousPage()">Back</md-button>
-            </md-step-actions>
-        </md-step>
-        <!-- Other steps if needed ... -->
-
-        <md-step md-label="Review and Submit">
-            <md-step-body>
-
-                <md-content class="md-padding" layout-xs="column" layout="column">
-                    <p>Review and Submit</p>
-                    <table>
-                        <tr>
-                            <th>
-                                Subject
-                            </th>
-                            <th>
-                                Value
-                            </th>    
-                        </tr>
-                        <tr>
-                            <td>Owner Name</td>
-                            <td>{{formData.lift_owner}}</td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>{{formData.address}}</td>  
-                        </tr>
-                        <tr>
-                            <td>Address 2</td>
-                            <td>{{formData.address_cont}}</td>  
-                        </tr>
-                        <tr>
-                            <td>City</td>
-                            <td>{{formData.city}}</td>
-                        </tr>
-                        <tr>
-                            <td>State</td>
-                            <td>{{formData.state}}</td>
-                        </tr>
-                        <tr>
-                            <td>Zip code</td>
-                            <td>{{formData.zipcode}}</td>
-                        </tr>
-                        <tr>
-                            <td>Phone</td>
-                            <td>{{formData.phone}}</td>
-                        </tr>
-                
-                        <tr>
-                            <td>Fax No.</td>
-                            <td>{{formData.fax}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Owner Email</td>
-                            <td>{{formData.email}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Operator ID</td>
-                            <td>{{formData.employee_id}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Lift Operator</td>
-                            <td>{{formData.operator}}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Lift Capacity</td>
-                            <td>{{formData.lift_capacity}}</td>
-                        </tr>
-                        <tr>
-                            <td>Is lift certified?</td>
-                            <td>{{formData.lift_certified}}</td>
-                        </tr>
-                        <tr>
-                            <td>Lift Design</td>
-                            <td>{{formData.lift_design}}</td>
-                        </tr>
-                        <tr>
-                            <td>Lift Manufacturer</td>
-                            <td>{{formData.lift_manufacturer}}</td>
-                        </tr>
-                        <tr>
-                            <td>Lift Model</td>
-                            <td>{{formData.lift_model}}</td>
-                        </tr>
-                        <tr>
-                            <td>Lift Type</td>
-                            <td>{{formData.lift_type}}</td>
-                        </tr>
-                        <tr>
-                            <td>Manufacturer Serial No.</td>
-                            <td>{{formData.mfg_serial}}</td>
-                        </tr>
+                    <md-content class="md-padding" layout-xs="column" layout="column">
+                        <p>Review and Submit</p>
+                        <table>
+                            <tr>
+                                <th>
+                                    Subject
+                                </th>
+                                <th>
+                                    Value
+                                </th>    
+                            </tr>
+                            <tr>
+                                <td>Owner Name</td>
+                                <td>{{formData.lift_owner}}</td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td>{{formData.address}}</td>  
+                            </tr>
+                            <tr>
+                                <td>Address 2</td>
+                                <td>{{formData.address_cont}}</td>  
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td>{{formData.city}}</td>
+                            </tr>
+                            <tr>
+                                <td>State</td>
+                                <td>{{formData.state}}</td>
+                            </tr>
+                            <tr>
+                                <td>Zip code</td>
+                                <td>{{formData.zipcode}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{formData.phone}}</td>
+                            </tr>
                     
-                        <tr>
-                            <td colspan="2"><h3>Inspector Info</h3></td>
-                        </tr>
-                        <tr>
-                            <td>Inspection Date</td>
-                            <td>{{formData.inspection_date}}</td>
-                        </tr>
-                        <tr>
-                            <td>Inspector Name</td>
-                            <td>{{formData.inspector_name}}</td>
-                        </tr>
-                        <tr>
-                            <td>Inspector Cerified</td>
-                            <td>{{formData.inspector_certified}}</td>
-                        </tr>
-                        <tr>
-                            <td>Inspector ID</td>
-                            <td>{{formData.inspector_id}}</td>
-                        </tr>
-                    
-                        <tr>
-                            <td>ALI certification #</td>
-                            <td>{{formData.ali_certification}}</td>
-                        </tr>
+                            <tr>
+                                <td>Fax No.</td>
+                                <td>{{formData.fax}}</td>
+                            </tr>
 
-                        <tr>
-                            <td colspan="2"><h3>Appendix C</h3></td>
-                        </tr>
-                        <tr ng-repeat="item in appendix.c">
-                            <td>{{item.subject}}</td>
-                            <td style="color:{{testPassColor(formData[item.key].pass)}}">{{formData[item.key].pass}}  </td>
-                        </tr>
+                            <tr>
+                                <td>Owner Email</td>
+                                <td>{{formData.email}}</td>
+                            </tr>
 
-                        <tr>
-                            <td colspan="2"><h3>Appendix D</h3></td>
-                        </tr>
+                            <tr>
+                                <td>Operator ID</td>
+                                <td>{{formData.employee_id}}</td>
+                            </tr>
 
-                        <tr ng-repeat="item in appendix.d">
-                            <td>{{item.subject}}</td>
-                            <td style="color:{{testPassColor(formData[item.key].pass)}}">{{formData[item.key].pass}}  </td>
-                        </tr>
+                            <tr>
+                                <td>Lift Operator</td>
+                                <td>{{formData.operator}}</td>
+                            </tr>
 
-                    </table>
-                    
-                </md-content>
+                            <tr>
+                                <td>Lift Capacity</td>
+                                <td>{{formData.lift_capacity}}</td>
+                            </tr>
+                            <tr>
+                                <td>Is lift certified?</td>
+                                <td>{{formData.lift_certified}}</td>
+                            </tr>
+                            <tr>
+                                <td>Lift Design</td>
+                                <td>{{formData.lift_design}}</td>
+                            </tr>
+                            <tr>
+                                <td>Lift Manufacturer</td>
+                                <td>{{formData.lift_manufacturer}}</td>
+                            </tr>
+                            <tr>
+                                <td>Lift Model</td>
+                                <td>{{formData.lift_model}}</td>
+                            </tr>
+                            <tr>
+                                <td>Lift Type</td>
+                                <td>{{formData.lift_type}}</td>
+                            </tr>
+                            <tr>
+                                <td>Manufacturer Serial No.</td>
+                                <td>{{formData.mfg_serial}}</td>
+                            </tr>
+                        
+                            <tr>
+                                <td colspan="2"><h3>Inspector Info</h3></td>
+                            </tr>
+                            <tr>
+                                <td>Inspection Date</td>
+                                <td>{{formData.inspection_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>Inspector Name</td>
+                                <td>{{formData.inspector_name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Inspector Cerified</td>
+                                <td>{{formData.inspector_certified}}</td>
+                            </tr>
+                            <tr>
+                                <td>Inspector ID</td>
+                                <td>{{formData.inspector_id}}</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>ALI certification #</td>
+                                <td>{{formData.ali_certification}}</td>
+                            </tr>
 
-            </md-step-body>
-            <!-- SECOND STEP ACTIONS -->
-            <md-step-actions>
-                <md-button class="md-primary md-raised" ng-click="submitForm();">Submit</md-button>
-                <md-button class="md-primary" ng-click="$ctrl.previousStep();">Back</md-button>
-            </md-step-actions>
-        </md-step>
+                            <tr>
+                                <td colspan="2"><h3>Appendix C</h3></td>
+                            </tr>
+                            <tr ng-repeat="item in appendix.c">
+                                <td>{{item.subject}}</td>
+                                <td style="color:{{testPassColor(formData[item.key].pass)}}">{{formData[item.key].pass}}  </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><h3>Appendix D</h3></td>
+                            </tr>
+
+                            <tr ng-repeat="item in appendix.d">
+                                <td>{{item.subject}}</td>
+                                <td style="color:{{testPassColor(formData[item.key].pass)}}">{{formData[item.key].pass}}  </td>
+                            </tr>
+
+                        </table>
+                        
 
 
-</md-stepper>
+
+                        <signature-pad accept="accept" clear="clear" height="220" width="568" disabled="false"></signature-pad>
+                        <button ng-click="clear()">Clear signature</button>
+                        <button ng-click="signature = accept()">Sign</button>
+                    </md-content>
+
+                </md-step-body>
+                <!-- SECOND STEP ACTIONS -->
+                <md-step-actions>
+                    <md-button class="md-primary md-raised" ng-click="submitForm();">Submit</md-button>
+                    <md-button class="md-primary" ng-click="$ctrl.previousStep();">Back</md-button>
+                </md-step-actions>
+            </md-step>
+
+
+    </md-stepper>
+</div>

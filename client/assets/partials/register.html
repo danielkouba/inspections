@@ -1,4 +1,4 @@
- <md-content class="md-padding" layout-xs="column" layout="column">
+ <md-content class="md-padding" layout-align="center center" layout-fill layout="column">
 	<h1>Register</h1>
 
 	 <div layout-gt-xs="row"  layout-align="space-around start">
@@ -21,12 +21,12 @@
 	 <div layout-gt-xs="row">
 		<md-input-container class="md-block">
 	        <label>Password</label>
-	        <input required md-no-asterisk name="password" ng-model="newUser.password">
+	        <input type="password" required md-no-asterisk name="password" ng-model="newUser.password">
 	    </md-input-container>
 
 	    <md-input-container class="md-block">
 	        <label>Confirm Password</label>
-	        <input required md-no-asterisk name="password_conf" ng-model="newUser.password_conf">
+	        <input type="password" required md-no-asterisk name="password_conf" ng-model="newUser.password_conf">
 	    </md-input-container>
 	</div>
 

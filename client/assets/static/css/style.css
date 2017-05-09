@@ -3,12 +3,34 @@
   padding:0;
 }
 
-.nav_logo {
-  height: 48px;
-  width: 150px;
-  display: inline-block;
-  overflow: hidden;
-  background-image: url("/assets/static/img/logo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
+.nav-blue{
+	height: 62px; 
+	width:100%; 
+	background:url(http://www.autolift.org/wp-content/themes/ali/images/blue-top.jpg) center top no-repeat; 
+	background-size:cover;
+}
+.nav-red{
+	background: #c60108;
+	height: 62px;
+	width:100%;
+}
+.nav-logo{
+	background: url(http://www.autolift.org/wp-content/themes/ali/images/logo.png) center no-repeat;
+	width: 140px; 
+	height: 140px; 
+	overflow:hidden; 
+	z-index:9999;
+}
+
+
+
+
+.md-steppers-header {
+	background-color:darkgrey;
+}
+.md-stepper-indicator-wrapper {
+	background-color: darkgrey;
+}
+.md-stepper-title{
+	color: white;
 }

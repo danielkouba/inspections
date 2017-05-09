@@ -1,22 +1,24 @@
-<md-content flex-gt-sm="30" flex="0">&nbsp;</md-content>
+<div layout-align="center center" layout="column" layout-fill>
+    <md-content flex-gt-sm="30" flex="0">&nbsp;</md-content>
 
-<md-content class="md-padding" layout-xs="column" layout="column" flex-gt-sm="30" flex="100">
-    <h1>Log In</h1>
-    <div ng-messages="loginErrors" role="alert">
-      <div ng-message="general">Invalid email and password combination.</div>
-    </div>
-	<md-input-container class="md-block">
-        <label>Email</label>
-        <input required md-no-asterisk name="email" ng-model="userData.email">
-    </md-input-container>
+    <md-content class="md-padding" layout-xs="column" layout="column" flex-gt-sm="30" flex="100">
+        <h1>Log In</h1>
+        <div ng-messages="loginErrors" role="alert">
+          <div ng-message="general">Invalid email and password combination.</div>
+        </div>
+    	<md-input-container class="md-block">
+            <label>Email</label>
+            <input required md-no-asterisk name="email" ng-model="userData.email">
+        </md-input-container>
 
-	<md-input-container class="md-block">
-        <label>Password</label>
-        <input required md-no-asterisk name="password" ng-model="userData.password">
-    </md-input-container>
+    	<md-input-container class="md-block">
+            <label>Password</label>
+            <input type="password" required md-no-asterisk name="password" ng-model="userData.password">
+        </md-input-container>
 
-	<md-button class="md-primary md-raised" ng-click="login()">Log In</md-button>
-    <a href="#/register">Sign up</a>    
-    <a href="#/passwordrecovery">Forgot Password?</a>	
-</md-content>
-<md-content flex-gt-sm="30" flex="0">&nbsp;</md-content>
+    	<md-button class="md-primary md-raised" ng-click="login()">Log In</md-button>
+        <p>Don't have an account? <a href="#/register">Register</a></p>    
+        <a href="#/passwordrecovery">Forgot Password?</a>	
+    </md-content>
+    <md-content flex-gt-sm="30" flex="0">&nbsp;</md-content>
+</div>
