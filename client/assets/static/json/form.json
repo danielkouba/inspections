@@ -1,0 +1,57 @@
+{
+	"id": "5.6.2.1",
+	"type": "radio", 
+	"description": "Record location of manufacturer's or generic instructions & confirm they are available to all operators.",
+	"options": ["Pass", "Fail", "N/A"],
+	"value" : "",
+	"sub":[
+		{
+		"type":"checkbox",
+		"description": "Manufacturer Installation, Operation, Inspection, Maintenance Instructions",
+		"options": ["In Office", "On Lift", "Other:"],
+		"value":""
+		},
+		{
+		"type":"checkbox",
+		"description": "Or equivalent (ANSI/ALI-ALOIM: 2008(R2013) - \"Blue Book\")",
+		"options": ["In Office", "On Lift", "Other:"]
+		}
+	]
+},																
+{
+	"id": "5.6.2.2",
+	"type": "radio" ,
+	"description": "Record location of generic safety instructions & confirm they are available to all operators.",
+	"options": ["Pass", "Fail", "N/A"],
+	"value" : "Pass Fail N/A",
+	"sub":[
+		{
+		"type":"checkbox",
+		"description": "Manufacturer Installation, Operation, Inspection, Maintenance Instructions",
+		"options": ["In Office", "On Lift", "Other:"]
+		},
+		{
+		"type":"checkbox",
+		"description": "Or equivalent (ANSI/ALI-ALOIM: 2008(R2013) - \"Blue Book\")",
+		"options": ["In Office", "On Lift", "Other:"]
+		}
+	]
+}					
+																		
+																		
+		Lift Safety Instructions, ALI/SM, "Lifting It Right" & ALI/ST "Safety Tips"									In Office		On Lift 		Other:			
+																		
+		Or equivalent, Identify:									In Office		On Lift 		Other:			
+																		
+5.6.2.3		Record location & verify current edition of lifting point information & confirm availability to all operators.																
+		"ALI/LP-Guide ""Quick Reference Guide,
+Vehicle Lifting Points for Frame Engaging Lifts"""						Identify Year:			In Office		On Lift 		Other:			
+																		
+		Or equivalent, Identify:									In Office		On Lift 		Other:			
+																		
+5.6.2.4		Check accessibility, confirm readability & appropriate lift safety labeling or placarding, report deficiencies.																
+		ALI/WL101, for two post surface mounted lifts								ALI/WL200, for surface mounted wheel engaging lifts								
+		ALI/WL300, for hinged frame engaging lifts								ALI/WL400, for wheel engaging mobile units								
+		ALI/WL500 for Inground lifts								ALI/WL600, for single post lifts								
+		Or equivalent, Identify:																
+																		

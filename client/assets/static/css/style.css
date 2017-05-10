@@ -34,3 +34,25 @@
 .md-stepper-title{
 	color: white;
 }
+
+
+/*Change this*/
+
+
+
+@media screen and (min-width:1000px){
+	#stepper-demo {
+		width:100%;
+	}	
+}
+@media screen and (min-width:1200px){
+	#stepper-demo {
+		width:80%;
+	}	
+}
+@media screen and (min-width:1520px){
+	#stepper-demo {
+		width:60%;
+	}	
+}
+

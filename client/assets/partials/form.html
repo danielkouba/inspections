@@ -6,8 +6,7 @@
             md-vertical="$ctrl.isVertical" 
             md-linear="$ctrl.isLinear"
             md-alternative="$ctrl.isAlternative"
-            ng-init="formView()"
-            style="width:60%">
+            ng-init="formView()">
         
             <!-- FIRST FORM STEP -->
 
@@ -310,7 +309,7 @@
                                     </md-button>  
                                 </td>
                             </tr>
-                            <tr ng-if="item.images.length > 0" md-row ng-show="!item.expanded" ng-repeat-end="">
+                            <tr md-row ng-show="!item.expanded" ng-repeat-end="">
                               <td md-cell colspan="7">             
                                     <md-grid-list md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3">
                                         <md-grid-tile class="thumb" ng-repeat="image in item.images" style="background-image:'url('https://s3-us-west-1.amazonaws.com/liftspec/' + image + ')'">
@@ -352,32 +351,32 @@
                             </tr>
                           </thead>
                           <tbody md-body>
-                            <tr md-row ng-repeat-start="item in appendix.d" data-ng-init="item.expanded = true">
+                            <tr md-row ng-repeat-start="item in appendix.d" data-ng-init="item.expanded = true" ng-click="item.expanded = toggleExpanded(item.expanded, $event)">
                               <td md-cell>{{item.subject}}</td>
                                 <td md-cell>
                                     <md-radio-group ng-model="formData[item.key].pass">
-                                        <md-radio-button value="pass" name="{{item.key}}" aria-label="pass"></md-radio-button>
+                                        <md-radio-button value="pass" name="{{item.key}}" ng-click="$event.stopPropagation();" aria-label="pass"></md-radio-button>
                                     </md-radio-group>
                                 </td>
                                 <td md-cell>
                                     <md-radio-group ng-model="formData[item.key].pass">
-                                        <md-radio-button value="fail" name="{{item.key}}" class="md-warn" aria-label="fail"></md-radio-button>
+                                        <md-radio-button value="fail" name="{{item.key}}"  ng-click="$event.stopPropagation();" class="md-warn" aria-label="fail"></md-radio-button>
                                     </md-radio-group>
                                 </td>
                               <td md-cell>
-                                <md-button class="md-fab md-mini md-primary" ng-click="item.expanded = toggleExpanded(item.expanded, $event)" aria-label="photos">
+                                <md-button class="md-fab md-mini md-primary" ng-click="$event.stopPropagation();" aria-label="photos">
                                   <md-icon ng-if="item.expanded" class="material-icons">assignment</md-icon>
                                   <md-icon ng-if="!item.expanded" class="material-icons">change_history</md-icon>
                                 </md-button>
                               </td>
                               <td md-cell>
-                                <md-button class="md-fab md-mini md-primary" ng-click="" aria-label="photos">
+                                <md-button class="md-fab md-mini md-primary" ng-click="$event.stopPropagation();" aria-label="photos">
                                     <md-icon class="material-icons">camera_alt</md-icon>
                                 </md-button>  
                               </td>
 
                             </tr>
-                            <tr ng-if="item.images.length > 0" md-row ng-show="!item.expanded" ng-repeat-end="">
+                            <tr md-row ng-show="!item.expanded" ng-repeat-end="">
                               <td md-cell colspan="7">
                                                    
                                     <md-grid-list md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3">
