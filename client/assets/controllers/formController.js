@@ -195,6 +195,9 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
 
     }
 
-
+    $scope.chooseFile = function(str) {
+        var id = "fileInput-"+str;
+        document.getElementById(id).click();
+    }
 
 });

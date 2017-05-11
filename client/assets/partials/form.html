@@ -370,12 +370,20 @@
                                 </md-button>
                               </td>
                               <td md-cell>
-                                <md-button class="md-fab md-mini md-primary" ng-click="$event.stopPropagation();" aria-label="photos">
+                            
+                                <!-- You will have to change all of this when working with an object -->
+                                <md-button class="md-fab md-mini md-primary" ng-click="chooseFile(item.key);$event.stopPropagation();" aria-label="photos">
                                     <md-icon class="material-icons">camera_alt</md-icon>
-                                </md-button>  
+                                </md-button>
+                                <div style="height:0px;position:absolute; left:-9999; overflow:hidden;">
+                                    <input type="file" id="fileInput-{{item.key}}" accept="image/*;capture=camera">    
+                                </div>
+                                  
                               </td>
 
                             </tr>
+
+                            <!-- THIS IS THE BEGINNING OF THE CELL TEMPLATES -->
                             <tr md-row ng-show="!item.expanded">
                               <td md-cell colspan="5">
                                 <div layout="row">
@@ -388,25 +396,22 @@
                                 </div>
                               </td>
                             </tr>
-                            <tr md-row ng-show="!item.expanded">
+                            <tr md-row ng-show="!item.expanded" ng-repeat-end="">
                               <td md-cell colspan="5">
-                                <div layout="row">
-                                    <div flex="100">
-                                        Item 3: Record Oil Type
-                                        <md-radio-group>
-                                        <label for="pass">
-                                        ATF</label>
-                                        <md-radio-button value="pass" name="pass" aria-label="pass"></md-radio-button>
-                                        <label for="pass">
-                                        Hydr. Oil
-                                        </label>
-                                        <md-radio-button value="pass" name="pass" aria-label="pass"></md-radio-button>
+                                <div>
+                                    <div layout="row" flex="100" layout-align="start center">
+                                        <span>Item 3. Record Oil Type&nbsp;</span>
+                                        <md-radio-group layout="row">
+                                            <label for="pass">ATF&nbsp;</label>
+                                             <md-radio-button value="pass" name="pass" aria-label="pass"></md-radio-button>
+                                            <label for="pass">Hydr. Oil&nbsp;</label>
+                                            <md-radio-button value="pass" name="pass" aria-label="pass"></md-radio-button>
                                     </md-radio-group>
                                     </div>
                                 </div>
                               </td>
                             </tr>
-                            <tr md-row ng-show="!item.expanded" ng-repeat-end="">
+                            <!-- <tr md-row ng-show="!item.expanded">
                               <td md-cell colspan="5">
                                 <div layout="row">
                                     <div flex="20">
@@ -420,7 +425,7 @@
                                     </div>
                                 </div>
                               </td>
-                            </tr>
+                            </tr> -->
                           </tbody>
                         </table>
                       </md-table-container>
