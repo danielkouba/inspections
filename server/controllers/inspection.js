@@ -6,6 +6,7 @@
 var mongoose = require('mongoose');
 var Inspection = mongoose.model('Inspection');
 var User = mongoose.model('User');
+var Lift = mongoose.model('Lift');
 
 function inspectionsController(){
 
@@ -56,10 +57,6 @@ function inspectionsController(){
 		} else {
 			User.findOne({"_id":req.session.user._id}).populate('_inspections').exec(function(err,user){
 				var errors =  {'errors' : 'Please log in to see this info'};
-				console.log("THIS IS FROM GET INSPECTIONSVVVVV");
-				console.log(req.session.user._id);
-				console.log(user);
-				console.log("THIS IS FROM GET INSPECTIONS^^^^");
 				if (!user){
 					console.log("There was something wrong with the query");
 					console.log(err);
@@ -67,7 +64,14 @@ function inspectionsController(){
 				} else {
 					//Save session user
 					req.session.user.inspections = user._inspections;
-					res.json(user._inspections);
+					Lift.findOne({"_id":req.session.user._id}).exec(function(err,lift){
+						if(!lift){
+							res.json(errors)		
+						} else {
+							res.json(user._inspections);
+						}
+					})
+					
 				}
 			})	
 		}

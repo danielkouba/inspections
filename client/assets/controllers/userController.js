@@ -1,4 +1,8 @@
-myApp.controller('userController', function($location, $scope, $cookies, userFactory, UserService){
+myApp.controller('userController', function($location, $scope, $cookies, userFactory, UserService, InspectionService){
+
+
+
+	$scope.InspectionService = InspectionService;
 
 	////////////////////////////////////////
 	// Constructors
@@ -162,5 +166,10 @@ myApp.controller('userController', function($location, $scope, $cookies, userFac
 		})
 	}
 
-
+	$scope.editInspection = function(inspection){
+		for (key in inspection){
+			InspectionService[key] = inspection[key];	
+		}
+		$location.url("/inspect");
+	}
 });

@@ -1,8 +1,8 @@
- <md-content class="md-padding" layout-align="center center" layout-fill layout="column">
+ <md-content class="md-padding" layout-align="start start" layout="column">
 	<h1>Register</h1>
 
-	 <div layout-gt-xs="row"  layout-align="space-around start">
-		<md-input-container>
+	 <div layout="row" layout-align="space-around start" layout-fill>
+		<md-input-container flex="50">
 			<label>Type of Account</label>
 			<md-select ng-model="newUser.type">
 				<md-option value="admin">Admin</md-option>
@@ -12,13 +12,13 @@
 	    </md-input-container>
 
 		<!-- EMAIL -->
-		<md-input-container class="md-block">
+		<md-input-container class="md-block" flex="50">
 	        <label>Email</label>
 	        <input required md-no-asterisk name="email" ng-model="newUser.email">
 	    </md-input-container>
 	</div>
 
-	 <div layout-gt-xs="row">
+	 <div layout="row">
 		<md-input-container class="md-block">
 	        <label>Password</label>
 	        <input type="password" required md-no-asterisk name="password" ng-model="newUser.password">
@@ -31,38 +31,38 @@
 	</div>
 
 	 <div layout-gt-xs="row">
-		<md-input-container class="md-block">
+		<md-input-container class="md-block" flex="50">
 	        <label>Name</label>
 	        <input required md-no-asterisk name="name" ng-model="newUser.name">
 	    </md-input-container>
 
-		<md-input-container class="md-block">
+		<md-input-container class="md-block" flex="50">
 	        <label>Company</label>
 	        <input required md-no-asterisk name="company" ng-model="newUser.company">
 	    </md-input-container>
 	</div>
 
 	<div layout-gt-xs="row">
-	    <md-input-container class="md-block">
+	    <md-input-container class="md-block" flex="50">
 	        <label>Address</label>
 	        <input required md-no-asterisk name="address" ng-model="newUser.address">
 	    </md-input-container>
 		
-		<md-input-container class="md-block">
+		<md-input-container class="md-block" flex="50">
 	        <label>Address 2</label>
 	        <input md-no-asterisk name="address2" ng-model="newUser.address2">
 	    </md-input-container>
 	</div>
 
-	 <div layout-gt-xs="row">	
-		<md-input-container class="md-block">
+	 <div layout-gt-xs="row" layout-align="space-between start" layout-fill>	
+		<md-input-container class="md-block" flex="50">
 	        <label>City</label>
 	        <input required md-no-asterisk name="city" ng-model="newUser.city">
 	    </md-input-container>
 
-		<md-input-container>
+		<md-input-container flex="50">
 			<label>State</label>
-			<md-select ng-model="newUser.state">
+			<md-select ng-model="newUser.state" md-block>
 				<md-option value="AL">ALABAMA</md-option>
 				<md-option value="AK">ALASKA</md-option>
 				<md-option value="AZ">ARIZONA</md-option>
@@ -116,25 +116,25 @@
 			</md-select>
 	    </md-input-container>
 	</div>
-	<div>
-		<md-input-container class="md-block">
+	<div layout-fill>
+		<md-input-container class="md-block" flex="50">
 	        <label>Zip Code</label>
 	        <input required md-no-asterisk name="zip_code" ng-model="newUser.zip_code">
 	    </md-input-container>
 	</div>
-	<div layout-gt-xs="row">
-		<md-input-container class="md-block">
+	<div layout-gt-xs="row" ng-show="newUser.type == 'inspector'" class="ng-hide" >
+		<md-input-container class="md-block" flex="50">
 	        <label>Inspector ID</label>
 	        <input md-no-asterisk name="inspector_id" ng-model="newUser.inspector_id">
 	    </md-input-container>
 
-		<md-input-container class="md-block">
+		<md-input-container class="md-block" flex="50"  ng-show="newUser.type == 'inspector'" class="ng-hide">
 	        <label>ALI Certification #</label>
 	        <input md-no-asterisk name="ali_certification" ng-model="newUser.ali_certification">
 	    </md-input-container>
 	</div>
-	<div layout-gt-xs="row">
+	<div layout-gt-xs="row" layout-align="space-between start" layout-fill>
+		<a href="#/login"><md-button>Log In</md-button></a>	
 		<md-button class="md-primary md-raised" ng-click="adduser()">Register</md-button>	
-		<a href="#/login">Log In</a>	
 	</div>
 </md-content>

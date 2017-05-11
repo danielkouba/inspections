@@ -60,3 +60,17 @@
 .table-row {
 	display: inline-block;
 }
+
+.table-results td{
+	width: 50%;
+	border:1px solid black;
+}
+.table-results tr:nth-child(even) {
+	background: #CCC;
+	color:grey;
+}
+
+.table-results tr:nth-child(odd) {
+	background: darkgrey;
+	color:white;
+}

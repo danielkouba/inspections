@@ -1,4 +1,4 @@
-myApp.controller('formController', function($location, $scope, $cookies, formFactory, $mdStepper){
+myApp.controller('formController', function($location, $scope, $cookies, formFactory, $mdStepper, userFactory, InspectionService){
 
 	var getdate = function(){
 		var datenow = new Date();
@@ -99,8 +99,19 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
 	////////////////////////////////////////
 
 	$scope.formView = function(){
+        $scope.checkLogin()
         // Load clients
-        getLiftOwners()
+        if($cookies.get('id')){
+            console.log(InspectionService)
+            if (InspectionService._id){
+                console.log("EDITING")
+                $scope.formData = InspectionService;
+            }
+            getLiftOwners();
+        } else {
+            $location.url("/");
+        }
+
 	}
 
 	// END Constructors
@@ -108,8 +119,6 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
 
 
 	$scope.testPassColor = function(pass){
-		// console.log("You ran test");
-		// console.log(pass)
 		if (pass == 'pass'){
 			return 'green'
 		} else {
@@ -129,8 +138,6 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
 
 
 	$scope.submitForm = function(){
-		console.log($scope.formData)
-
 		formFactory.submitForm($scope.formData, function(data){
 			if(data.errors){
 				console.log("There was an error")
@@ -152,6 +159,9 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
         })
     }
 
+    ////////////////////////////////////////
+    //  Add a lift
+    ////////////////////////////////////////
     $scope.addlift = function(){
         console.log($scope.newLift);
         formFactory.addlift($scope.newLift, function(data){
@@ -159,32 +169,48 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
             $location.url('/dashboard/liftowner')
         })
     }
+
+
+    ////////////////////////////////////////
+    // Expand Table Row
+    ////////////////////////////////////////
 	$scope.toggleExpanded = function(expanded, $event) {
 		//Prevent the button click from selecting entire row
   		$event.stopPropagation();
 		//Toggle the expanded state 
   		return !expanded;
 	}
+    // END Expand Table Row
+    ////////////////////////////////////////
 
 
-    $scope.searchTextChange = function(text) {
-        // console.log('Text changed to ' + text);
-    }
 
+    ////////////////////////////////////////
+    // IDK DELETE?
+    ////////////////////////////////////////
+    // $scope.searchTextChange = function(text) {
+    //     // console.log('Text changed to ' + text);
+    // }
+    // IDK DELETE?
+    ////////////////////////////////////////
+
+    ////////////////////////////////////////
+    // Owner Drop Down Handler
+    ////////////////////////////////////////
     $scope.selectedOwnerChange = function(item) {
         console.log('Item changed to ' + item);
         $scope.formData.lift_owner = item.company;
         $scope.formData.address = item.address;
-        // $scope.formData.address_cont = item.address_cont;
         $scope.formData.city = item.city;
         $scope.formData.state = item.state;
         $scope.formData.zipcode = item.zip_code;
-        // $scope.formData.phone = item.phone;
         $scope.formData.email = item.email;
         $scope.lifts = item._lifts
     }
 
-
+    ////////////////////////////////////////
+    // Lift Drop Down Handler
+    ////////////////////////////////////////
     $scope.selectedLiftChange = function(item) {
         console.log('Item changed to ' + item);
         $scope.formData.lift_manufacturer = item.manufacturer;
@@ -198,6 +224,28 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
     $scope.chooseFile = function(str) {
         var id = "fileInput-"+str;
         document.getElementById(id).click();
+    }
+
+ 
+    ////////////////////////////////////////
+    // Check to see if user is logged in  
+    ////////////////////////////////////////
+    $scope.checkLogin = function(){
+        userFactory.checkLogin(function(data){
+            if (!data._id){
+                console.log("LOGGED OUT")
+                $scope.logout();
+            }
+        })
+    }
+    ////////////////////////////////////////
+    // If not clear the cookie
+    $scope.logout = function(){
+        $cookies.remove('name');
+        $cookies.remove('id');
+        $cookies.remove('type');
+        $scope = {}
+        $location.url('/'); 
     }
 
 });

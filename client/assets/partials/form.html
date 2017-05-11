@@ -10,10 +10,10 @@
         
             <!-- FIRST FORM STEP -->
 
-            <md-step md-label="Appendix A">
+            <md-step md-label="Customer Info">
                 <md-step-body>
                     <md-content class="md-padding" layout-xs="column" layout="column">
-                    <p>Appendix A</p>
+                    <h2 class="md-margin">Customer Info</h2>
                     <!-- SELECT Business AutoComplete -->
                     <md-autocomplete
                       ng-disabled="formData.isDisabled"
@@ -145,7 +145,22 @@
                     </md-input-container>
 
                     <!-- SELECT Lift AutoComplete -->
+                    </md-content>
+                </md-step-body>
+                <md-step-actions layout="row" layout-align="space-around center">
+                    <md-button class="md-primary" ng-click="$ctrl.cancel();">Cancel</md-button>
+                    <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
+                </md-step-actions>
+            </md-step>
 
+
+
+            <!-- SECOND FORM STEP -->
+            <md-step md-label="Lift Info">
+                <md-step-body layout="column">
+
+                    <md-content class="md-padding" layout-xs="column" layout="column" >
+                        <h2 class="md-margin">Lift Info</h2>
                     <md-autocomplete
                       ng-disabled="formData.isDisabled"
                       md-no-cache="formData.noCache"
@@ -166,36 +181,22 @@
                     </md-not-found>
                   </md-autocomplete>
 
-                    <md-input-container class="md-block">
-                        <label>Lift Manufacturer</label>
-                        <input required md-no-asterisk name="lift_manufacturer" ng-model="formData.lift_manufacturer">
-                    </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Lift Manufacturer</label>
+                            <input required md-no-asterisk name="lift_manufacturer" ng-model="formData.lift_manufacturer">
+                        </md-input-container>
 
-                    <md-input-container class="md-block">
-                        <label>Lift Model</label>
-                        <input required md-no-asterisk name="lift_model" ng-model="formData.lift_model">
-                    </md-input-container>
-                    
-                    <md-input-container class="md-block">
-                        <label>Lift Manufacturer Serial No.</label>
-                        <input required md-no-asterisk name="mfg_serial" ng-model="formData.mfg_serial">
-                    </md-input-container>
-                    </md-content>
-                </md-step-body>
-                <md-step-actions>
-                    <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
-                    <md-button class="md-primary" ng-click="$ctrl.cancel();">Cancel</md-button>
-                </md-step-actions>
-            </md-step>
+                        <md-input-container class="md-block">
+                            <label>Lift Model</label>
+                            <input required md-no-asterisk name="lift_model" ng-model="formData.lift_model">
+                        </md-input-container>
+                        
+                        <md-input-container class="md-block">
+                            <label>Lift Manufacturer Serial No.</label>
+                            <input required md-no-asterisk name="mfg_serial" ng-model="formData.mfg_serial">
+                        </md-input-container>
 
 
-
-            <!-- SECOND FORM STEP -->
-            <md-step md-label="Appendix B">
-                <md-step-body layout="column">
-
-                    <md-content class="md-padding" layout-xs="column" layout="column" >
-                        <p>Appendix B</p>
 
                         <md-input-container class="md-block">
                             <label>Lift Capacity</label>
@@ -249,9 +250,9 @@
 
                 </md-step-body>
                 <!-- SECOND STEP ACTIONS -->
-                <md-step-actions>
-                    <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
+                <md-step-actions layout="row" layout-align="space-around center">
                     <md-button class="md-primary" ng-click="$ctrl.previousStep();">Back</md-button>
+                    <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
                 </md-step-actions>
             </md-step>
 
@@ -264,7 +265,7 @@
                 <md-step-body>
 
                     <md-content class="md-padding" layout-xs="column" layout="column" flex="66">
-                    <p>Appendix C</p>
+                    <h2 class="md-margin">Appendix C</h2>
                       <!-- This table uses this dependency https://github.com/daniel-nagy/md-data-table   -->
                       <md-table-container>
                         <table md-table>
@@ -326,9 +327,9 @@
 
                 </md-step-body>
                 <!--  THIRD STEP ACTIONS -->
-                <md-step-actions>
-                    <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
+                <md-step-actions layout="row" layout-align="space-around center">
                     <md-button class="md-primary" ng-click="$ctrl.previousStep();">Back</md-button>
+                    <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
                 </md-step-actions>
             </md-step>
 
@@ -337,7 +338,7 @@
             <md-step md-label="Appendix D">
                 <md-step-body>
                     <md-content class="md-padding" layout-xs="column" layout="column">
-                    <p>Appendix D</p>
+                    <h2 class="md-margin">Appendix D</h2>
                     <!-- This table uses this dependency https://github.com/daniel-nagy/md-data-table   -->
                       <md-table-container>
                         <table md-table>
@@ -432,7 +433,7 @@
                     </md-content>
 
                 </md-step-body>
-                <md-step-actions>
+                <md-step-actions layout="row" layout-align="space-around center">
                     <md-button class="md-primary" ng-click="previousPage()">Back</md-button>
                     <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
                 </md-step-actions>
@@ -443,15 +444,11 @@
                 <md-step-body>
 
                     <md-content class="md-padding" layout-xs="column" layout="column">
-                        <p>Review and Submit</p>
-                        <table>
+                        <h2 class="md-margin">Review and Submit</h2>
+                        <table class="table-results">
                             <tr>
-                                <th>
-                                    Subject
-                                </th>
-                                <th>
-                                    Value
-                                </th>    
+                                <th></th>
+                                <th>Value</th>    
                             </tr>
                             <tr>
                                 <td>Owner Name</td>
@@ -578,16 +575,16 @@
 
 
 
-                        <signature-pad accept="accept" clear="clear" height="220" width="568" disabled="false"></signature-pad>
+                  <!--       <signature-pad accept="accept" clear="clear" height="220" width="568" disabled="false"></signature-pad>
                         <button ng-click="clear()">Clear signature</button>
-                        <button ng-click="signature = accept()">Sign</button>
+                        <button ng-click="signature = accept()">Sign</button> -->
                     </md-content>
 
                 </md-step-body>
                 <!-- SECOND STEP ACTIONS -->
-                <md-step-actions>
-                    <md-button class="md-primary md-raised" ng-click="submitForm();">Submit</md-button>
+               <md-step-actions layout="row" layout-align="space-around center">
                     <md-button class="md-primary" ng-click="$ctrl.previousStep();">Back</md-button>
+                    <md-button class="md-primary md-raised" ng-click="submitForm();">Submit</md-button>
                 </md-step-actions>
             </md-step>
 

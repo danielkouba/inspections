@@ -1,0 +1,71 @@
+myApp.factory('InspectionService', function(){
+    return {
+	    address: "",
+		address_cont: "",
+		ali_certification: "",
+		c1: "",
+		c2: "",
+		c3: "",
+		c4: "",
+		c5: "",
+		c6: "",
+		c7:"",
+		c8: "",
+		c9: "",
+		c10:"",
+		c11: "",
+		c12: "",
+		c13: "",
+		c14: "",
+		c15: "",
+		c16: "",
+		c17: "",
+		c18: "",
+		c19: "",
+		c20: "",
+		c21: "",
+		c22: "",
+		c23: "",
+		c24: "",
+		c25: "",
+		c26: "",
+		c27: "",
+		c28: "",
+		city: "",
+		completed: "",
+		_company: "",
+		d1: "",
+		d2: "",
+		d3: "",
+		d4: "",
+		d5: "",
+		d6: "",
+		d7: "",
+		d8: "",
+		email:"",
+		employee_id:"",
+		fax:"",
+		inspection_date:"",  //Date
+		inspector_certified:"", //Bool
+		inspector_id:"",
+		inspector_name:"",
+		_inspector:"",
+		lift_capacity:"", //Number
+		lift_certified:"", //Bool
+		lift_design:"",
+		lift_manufacturer:"",
+		lift_model:"",
+		lift_owner:"",
+		lift_type:"",
+		mfg_serial:"",
+		operator:"",
+		phone:"",
+		state:"",
+		status:"",
+		zipcode:""
+    };
+});
+
+
+
+
