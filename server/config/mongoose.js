@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 	path	 = require('path'),
 	models_path = path.join( __dirname, '../models'),
 	reg		 = new RegExp( ".js$", "i"),
-	dbURI	 = 'mongodb://localhost/inspection';
+	dbURI	 = 'mongodb://127.0.0.1:27017/inspection';
 
 ////////////////////////////////////////
 // Connection Events

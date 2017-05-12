@@ -15,6 +15,7 @@
           <th md-column>Capacity</th>
           <th md-column>Inspected On</th>
           <th md-column>Due for Inspection</th>
+          <th md-column>Print</th>
         </tr>
       </thead>
       <tbody md-body>
@@ -31,6 +32,9 @@
           </td> -->
           <td md-cell ng-repeat="l in lift._inspections | orderBy: '-created_at' | limitTo: 1">{{l.created_at  | amDateFormat : 'MM/DD/YYYY'}}</td>
           <td md-cell ng-repeat="l in lift._inspections | orderBy: '-created_at' | limitTo: 1">{{l.created_at  | amAdd : '1' : 'years' | amDateFormat : 'MM/DD/YYYY'}}</td>
+          <td md-cell>
+            <md-icon ng-click="createPDF(lift._inspections[lift._inspections.length-1])" class="material-icons">local_printshop</md-icon>
+          </td>
           <!-- <td md-cell>{{product.max_rise}}"</td>
           <td md-cell>{{product.runway_length}}"</td>
           <td md-cell>{{product.overall_width}}"</td>

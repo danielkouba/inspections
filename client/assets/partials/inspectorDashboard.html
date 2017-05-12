@@ -14,16 +14,20 @@
           <th md-column md-string>Date</th>
           <th md-column md-string>Pass/Fail</th>
           <th md-column md-string>Edit</th>
+          <th md-column md-string>PDF</th>
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row ng-repeat="inspection in inspections" data-ng-init="inspection.expanded = true">
+        <tr md-row ng-repeat="inspection in inspections | orderBy:'-created_at' " data-ng-init="inspection.expanded = true">
           <td md-cell>{{inspection.lift_owner}}</td>
           <td md-cell>{{inspection.lift_model}}</td>
           <td md-cell>{{inspection.created_at | date : "MMM d, y"}}</td>
-          <td md-cell>{{inspection.completed}}</td>
+          <td md-cell>{{inspection.status}}</td>
           <td md-cell>
             <md-icon ng-click="editInspection(inspection)" class="material-icons">mode_edit</md-icon>
+          </td>
+          <td md-cell>
+            <md-icon ng-click="createPDF(inspection)" class="material-icons">local_printshop</md-icon>
           </td>
 
         </tr>

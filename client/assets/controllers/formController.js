@@ -1,4 +1,4 @@
-myApp.controller('formController', function($location, $scope, $cookies, formFactory, $mdStepper, userFactory, InspectionService){
+myApp.controller('formController', function($location, $scope, $cookies, formFactory, $mdStepper, $mdDialog, userFactory, InspectionService){
 
 	var getdate = function(){
 		var datenow = new Date();
@@ -102,6 +102,7 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
         $scope.checkLogin()
         // Load clients
         if($cookies.get('id')){
+            $scope.formData = {};
             console.log(InspectionService)
             if (InspectionService._id){
                 console.log("EDITING")
@@ -238,5 +239,51 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
         $scope = {}
         $location.url('/'); 
     }
+
+
+
+    $scope.showConfirm = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+          .title('Is this inspection complete?')
+          // .textContent('')
+          .ariaLabel('Inspection Complete')
+          .targetEvent(ev)
+          .ok('Yes')
+          .cancel('No');
+
+
+
+    $mdDialog.show(confirm).then(function() {
+        $scope.formData.completed = true;
+        $scope.showPassFail(ev)
+    }, function() {
+        $scope.formData.completed = false;
+    });
+    };
+
+    $scope.showPassFail = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var passFail = $mdDialog.confirm()
+        .title('Did the lift pass or fail?')
+        // .textContent('All of the banks have agreed to forgive you your debts.')
+        .ariaLabel('pass fail')
+        .targetEvent(ev)
+        .ok('Pass')
+        .cancel('Fail');
+
+
+    $mdDialog.show(passFail).then(function() {
+        $scope.formData.status = 'pass';
+        $scope.submitForm();
+    }, function() {
+        console.log("denied")
+        $scope.formData.status = 'fail';
+        $scope.submitForm();
+    });
+
+    };
+
+
 
 });

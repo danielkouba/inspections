@@ -1,4 +1,4 @@
-<div layout-align="start center" layout="column" layout-fill >
+<div layout-align="start center" layout="column" layout-fill>
     <!-- FORM STEPPER -->
 
     <md-stepper id="stepper-demo" 
@@ -11,7 +11,7 @@
             <!-- FIRST FORM STEP -->
 
             <md-step md-label="Customer Info">
-                <md-step-body>
+                <md-step-body >
                     <md-content class="md-padding" layout-xs="column" layout="column">
                     <h2 class="md-margin">Customer Info</h2>
                     <!-- SELECT Business AutoComplete -->
@@ -26,14 +26,14 @@
                       md-item-text="owner.company"
                       md-min-length="0"
                       placeholder="Choose a business">
-                    <md-item-template>
-                      <span md-highlight-text="formData.searchText" md-highlight-flags="^i">{{owner.company}}</span>    
-                    </md-item-template>
-                    <md-not-found>
-                      No states matching "{{formData.searchText}}" were found.
-                      <a ng-click="formData.newState(formData.searchText)">Create a new one!</a>
-                    </md-not-found>
-                  </md-autocomplete>
+                        <md-item-template>
+                          <span md-highlight-text="formData.searchText" md-highlight-flags="^i">{{owner.company}}</span>    
+                        </md-item-template>
+                        <md-not-found>
+                          No states matching "{{formData.searchText}}" were found.
+                          <a ng-click="formData.newState(formData.searchText)">Create a new one!</a>
+                        </md-not-found>
+                    </md-autocomplete>
 
                     <md-input-container class="md-block">
                         <label>Lift Owner</label>
@@ -287,7 +287,7 @@
                                 <!-- Pass -->
                                 <td md-cell>
                                     <md-radio-group ng-model="formData[item.key].pass">
-                                        <md-radio-button value="pass" name="{{item.key}}" aria-label="pass"></md-radio-button>
+                                        <md-radio-button value="pass" name="{{item.key}}" aria-label="pass" class="md-primary"></md-radio-button>
                                     </md-radio-group>
                                 </td>
                                 <!-- Fail -->
@@ -305,19 +305,18 @@
                                 </td>
                                 <!-- Take Picture -->
                                 <td md-cell>
-                                    <md-button class="md-fab md-mini md-primary" ng-click="" aria-label="photos">
-                                        <md-icon class="material-icons">camera_alt</md-icon>
-                                    </md-button>  
+                                     <md-button class="md-fab md-mini md-primary" ng-click="chooseFile(item.key);$event.stopPropagation();" aria-label="photos">
+                                    <md-icon class="material-icons">camera_alt</md-icon>
+                                </md-button>
+                                <div style="height:0px;position:absolute; left:-9999; overflow:hidden;">
+                                    <input type="file" id="fileInput-{{item.key}}" accept="image/*;capture=camera">    
+                                </div>  
                                 </td>
                             </tr>
                             <tr md-row ng-show="!item.expanded" ng-repeat-end="">
-                              <td md-cell colspan="7">             
-                                    <md-grid-list md-cols="3" md-row-height-gt-md="1:1" md-row-height="4:3">
-                                        <md-grid-tile class="thumb" ng-repeat="image in item.images" style="background-image:'url('https://s3-us-west-1.amazonaws.com/liftspec/' + image + ')'">
-                                            <img src="https://s3-us-west-1.amazonaws.com/liftspec/{{image}}" alt="">
+                              <td md-cell colspan="5">
 
-                                        </md-grid-tile>
-                                    </md-grid-list>       
+                                    <textarea style="margin: 10px;" name="" id="" cols="80" rows="10"></textarea>  
                               </td>
                             </tr>
                           </tbody>
@@ -356,7 +355,7 @@
                               <td md-cell>{{item.subject}}</td>
                                 <td md-cell>
                                     <md-radio-group ng-model="formData[item.key].pass">
-                                        <md-radio-button value="pass" name="{{item.key}}" ng-click="$event.stopPropagation();" aria-label="pass"></md-radio-button>
+                                        <md-radio-button value="pass" name="{{item.key}}" ng-click="$event.stopPropagation();" aria-label="pass"  class="md-primary"></md-radio-button>
                                     </md-radio-group>
                                 </td>
                                 <td md-cell>
@@ -584,7 +583,8 @@
                 <!-- SECOND STEP ACTIONS -->
                <md-step-actions layout="row" layout-align="space-around center">
                     <md-button class="md-primary" ng-click="$ctrl.previousStep();">Back</md-button>
-                    <md-button class="md-primary md-raised" ng-click="submitForm();">Submit</md-button>
+                    <!-- <md-button class="md-primary md-raised" ng-click="submitForm();">Submit</md-button> -->
+                    <md-button class="md-primary md-raised" ng-click="showConfirm($event);">Submit</md-button>
                 </md-step-actions>
             </md-step>
 
