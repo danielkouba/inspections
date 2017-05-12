@@ -58,7 +58,8 @@ function inspectionsController(){
 		if (!req.session.user){
 			res.json({'errors' : 'Please log in to see this info'})
 		} else {
-			User.findOne({"_id":req.session.user._id}).populate('_lifts').exec(function(err,user){
+			// User.findOne({"_id":req.session.user._id}).populate('_lifts')
+			User.findOne({"_id":req.session.user._id}).populate({path:'_lifts', model: 'Lift', populate: {path:'_inspections', model: 'Inspection'}}).exec(function(err,user){
 				var errors =  {'errors' : 'Please log in to see this info'};
 				if (!user){
 					console.log("There was something wrong with the query");

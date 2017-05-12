@@ -2,6 +2,9 @@
   margin:0;
   padding:0;
 }
+*:focus{
+	outline: none;
+}
 
 .nav-blue{
 	height: 62px; 
@@ -63,7 +66,7 @@
 
 .table-results td{
 	width: 50%;
-	border:1px solid black;
+	/*border:1px solid black;*/
 }
 .table-results tr:nth-child(even) {
 	background: #CCC;
@@ -71,6 +74,6 @@
 }
 
 .table-results tr:nth-child(odd) {
-	background: darkgrey;
-	color:white;
+	background: #FAFAFA;
+	color:grey;
 }

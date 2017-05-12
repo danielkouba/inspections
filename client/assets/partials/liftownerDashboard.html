@@ -13,8 +13,8 @@
           <th md-column>Manufacturer</th>
           <th md-column>Serial</th>
           <th md-column>Capacity</th>
-          <th md-column>Pass/Fail</th>
-          <th md-column>Edit</th>
+          <th md-column>Inspected On</th>
+          <th md-column>Due for Inspection</th>
         </tr>
       </thead>
       <tbody md-body>
@@ -29,8 +29,8 @@
               <md-icon ng-if="!product.expanded" class="material-icons">change_history</md-icon>
             </md-button>
           </td> -->
-
-          <td md-cell></td>
+          <td md-cell ng-repeat="l in lift._inspections | orderBy: '-created_at' | limitTo: 1">{{l.created_at  | amDateFormat : 'MM/DD/YYYY'}}</td>
+          <td md-cell ng-repeat="l in lift._inspections | orderBy: '-created_at' | limitTo: 1">{{l.created_at  | amAdd : '1' : 'years' | amDateFormat : 'MM/DD/YYYY'}}</td>
           <!-- <td md-cell>{{product.max_rise}}"</td>
           <td md-cell>{{product.runway_length}}"</td>
           <td md-cell>{{product.overall_width}}"</td>

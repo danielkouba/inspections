@@ -54,7 +54,8 @@ myApp.controller('userController', function($location, $scope, $cookies, userFac
 			$location.url('/dashboard/inspector');
 		} else {
 			//The Correct Path
-			$scope.getUserLifts()			
+			$scope.getUserLifts();
+
 		}
 	}
 	// END Constructors
@@ -154,13 +155,13 @@ myApp.controller('userController', function($location, $scope, $cookies, userFac
 		})
 	}
 
-		$scope.getUserLifts = function(){
+	$scope.getUserLifts = function(){
 		userFactory.getUserLifts(function(data){
 			if (data.errors) {
 				console.log("THERE WERE ERRORS GETTING LIFTS")
 				// console.log(data.errors)
 			} else {
-				$scope.lifts = data;
+				$scope.lifts = data;	
 			}
 
 		})
@@ -172,4 +173,45 @@ myApp.controller('userController', function($location, $scope, $cookies, userFac
 		}
 		$location.url("/inspect");
 	}
+
+
+	// var getdate = function(){
+	// 	var datenow = new Date();
+	// 	var month = (datenow.getMonth() + 1).toString();
+	// 	var day = datenow.getDate().toString();
+	// 	var year = datenow.getFullYear().toString();
+
+	// 	day = day.length == 1 ? "0" + day : day;
+	// 	month = month.length == 1 ? "0" + month : month;
+	// 	return year + "-" + month + "-" + day
+	// }
+
+
+	// $scope.setDate= function(date){
+	// 	console.log("In set Date with this data")
+	// 	console.log(date)
+	// 	var month = (date.getMonth() + 1).toString();
+	// 	var day = date.getDate().toString();
+	// 	var year = date.getFullYear().toString();
+	// 	day = day.length == 1 ? "0" + day : day;
+	// 	month = month.length == 1 ? "0" + month : month;
+	// 	return month + "/" + day + "/" + year
+	// }
+
+	// $scope.setExpiration = function(date){
+	// 	console.log("In set expiration with this data")
+	// 	console.log(date)
+	// 	var month = (date.getMonth() + 1).toString();
+	// 	var day = date.getDate().toString();
+	// 	var year = (date.getFullYear()+1).toString();
+	// 	day = day.length == 1 ? "0" + day : day;
+	// 	month = month.length == 1 ? "0" + month : month;
+	// 	return month + "/" + day + "/" + year
+	// }
+
+
+
+
+
+
 });

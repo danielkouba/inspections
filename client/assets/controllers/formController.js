@@ -29,49 +29,49 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
                 {"key": "c6",
                 "subject":"Record manufacturer name, model number and serial number(s)."},
                 {"key": "c7",
-                "subject":"Confirm adequacy of clearances around lift."},
-                {"key": "c8",
-                "subject":"Examine all structural components including welds."},
-                {"key": "c9",
-                "subject":"Examine electrical components and wiring."},
-                {"key": "c10",
-                "subject":"Check the lift controls."},
-                {"key": "c11",
-                "subject":"On lifts using runways, check to ensure proper operation of all features."},
-                {"key": "c12",
-                "subject":"On lifts using swing arms, check telescoping stops."},
-                {"key": "c13",
-                "subject":"On lifts requiring swing arm restraints, check for proper function."},
-                {"key": "c14",
-                "subject":"Check all fastening devices for tightness including floor anchor bolts."},
-                {"key": "c15",
-                "subject":"Check exposed surfaces and edges."},
-                {"key": "c16",
-                "subject":"Operate the lift and check the operation of the positive stop and the lift locks."},
-                {"key": "c17",
-                "subject":"On lifts employing adapters, check condition and proper operation."},
-                {"key": "c18",
-                "subject":"With a representative vehicle on the lift, check the lowering speed."},
-                {"key": "c19",
-                "subject":"Check all points requiring lubrication."},
-                {"key": "c20",
-                "subject":"On lifts equipped with lateral synchronization or equalization systems, check the operation of the synchronization or equalization systems."},
-                {"key": "c21",
-                "subject":"On lifts incorporating working platforms, railings and stairways, check the railings and the walking surfaces."},
-                {"key": "c22",
-                "subject":"On lifts incorporating overhead structures, verify the safety shutoff."},
-                {"key": "c23",
-                "subject":"Inspect all chains and wire ropes."},
-                {"key": "c24",
-                "subject":"Check the tracking and level winding of wire ropes and chains."},
-                {"key": "c25",
-                "subject":"Report unguarded pinch points."},
-                {"key": "c26",
-                "subject":"Confirm single point operation of multiple powered posts."},
-                {"key": "c27",
-                "subject":"Report water in sub-floor pits or enclosures."},
-                {"key": "c28",
-                "subject":"Check all accessories for construction and labeling."}
+                "subject":"Confirm adequacy of clearances around lift."}
+                // {"key": "c8",
+                // "subject":"Examine all structural components including welds."},
+                // {"key": "c9",
+                // "subject":"Examine electrical components and wiring."},
+                // {"key": "c10",
+                // "subject":"Check the lift controls."},
+                // {"key": "c11",
+                // "subject":"On lifts using runways, check to ensure proper operation of all features."},
+                // {"key": "c12",
+                // "subject":"On lifts using swing arms, check telescoping stops."},
+                // {"key": "c13",
+                // "subject":"On lifts requiring swing arm restraints, check for proper function."},
+                // {"key": "c14",
+                // "subject":"Check all fastening devices for tightness including floor anchor bolts."},
+                // {"key": "c15",
+                // "subject":"Check exposed surfaces and edges."},
+                // {"key": "c16",
+                // "subject":"Operate the lift and check the operation of the positive stop and the lift locks."},
+                // {"key": "c17",
+                // "subject":"On lifts employing adapters, check condition and proper operation."},
+                // {"key": "c18",
+                // "subject":"With a representative vehicle on the lift, check the lowering speed."},
+                // {"key": "c19",
+                // "subject":"Check all points requiring lubrication."},
+                // {"key": "c20",
+                // "subject":"On lifts equipped with lateral synchronization or equalization systems, check the operation of the synchronization or equalization systems."},
+                // {"key": "c21",
+                // "subject":"On lifts incorporating working platforms, railings and stairways, check the railings and the walking surfaces."},
+                // {"key": "c22",
+                // "subject":"On lifts incorporating overhead structures, verify the safety shutoff."},
+                // {"key": "c23",
+                // "subject":"Inspect all chains and wire ropes."},
+                // {"key": "c24",
+                // "subject":"Check the tracking and level winding of wire ropes and chains."},
+                // {"key": "c25",
+                // "subject":"Report unguarded pinch points."},
+                // {"key": "c26",
+                // "subject":"Confirm single point operation of multiple powered posts."},
+                // {"key": "c27",
+                // "subject":"Report water in sub-floor pits or enclosures."},
+                // {"key": "c28",
+                // "subject":"Check all accessories for construction and labeling."}
 	];
 
 	$scope.appendix.d = [
@@ -184,16 +184,6 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
     ////////////////////////////////////////
 
 
-
-    ////////////////////////////////////////
-    // IDK DELETE?
-    ////////////////////////////////////////
-    // $scope.searchTextChange = function(text) {
-    //     // console.log('Text changed to ' + text);
-    // }
-    // IDK DELETE?
-    ////////////////////////////////////////
-
     ////////////////////////////////////////
     // Owner Drop Down Handler
     ////////////////////////////////////////
@@ -218,6 +208,7 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
         $scope.formData.mfg_serial = item.serial;
         $scope.formData.lift_capacity = item.capacity;
         $scope.formData.lift_type = item.type;
+        $scope.formData.lift_id = item._id;
 
     }
 

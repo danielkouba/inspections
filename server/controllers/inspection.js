@@ -36,8 +36,25 @@ function inspectionsController(){
 							if(err){
 								res.json(err)
 							} else {
-								res.json(result)
 
+								Lift.findOne({"_id":req.body.lift_id}).exec(function(err,lift){
+									if(!lift){
+										console.log("We didnt find a lift")
+										res.json(errors)		
+									} else {
+										console.log("We found a lift and are pushing inspections to it")
+										lift._inspections.push(inspection)
+										lift.save(function(err, data){
+											if(err){
+												console.log("Something wend wrong saving the lift")
+												res.json(err)
+											} else {
+												console.log("We made it fam")
+												res.json(result)
+											}
+										})
+									}
+								})
 							}
 						})
 					}
@@ -64,13 +81,7 @@ function inspectionsController(){
 				} else {
 					//Save session user
 					req.session.user.inspections = user._inspections;
-					Lift.findOne({"_id":req.session.user._id}).exec(function(err,lift){
-						if(!lift){
-							res.json(errors)		
-						} else {
-							res.json(user._inspections);
-						}
-					})
+					res.json(user._inspections);
 					
 				}
 			})	

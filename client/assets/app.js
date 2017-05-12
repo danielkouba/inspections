@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngMessages', 'ngMaterial', 'md.data.table', 'ngFileUpload', 'mdSteppers', 'signature']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngMessages', 'ngMaterial', 'md.data.table', 'ngFileUpload', 'mdSteppers', 'signature', 'angularMoment']);
 
 myApp.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingProvider){
 	
