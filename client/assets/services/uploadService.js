@@ -2,7 +2,7 @@
 // http://www.ryansouthgate.com/2015/12/24/upload-amazon-s3-using-angularjs/
 
 
-myApp.service('S3UploadService', ['$q', function ($q) {
+app.service('S3UploadService', ['$q', function ($q) {
     // Us standard region
     AWS.config.region = 'us-west-1';
   

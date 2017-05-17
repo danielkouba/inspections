@@ -1,4 +1,4 @@
-<div layout-align="center start" layout="row" layout-fill>
+<!-- <div layout-align="center start" layout="row" layout-fill>
     <md-content class="md-padding" layout-xs="column" layout="column" flex-gt-sm="30" flex="100">
         <h1>Log In</h1>
         <div ng-messages="loginErrors" role="alert">
@@ -14,8 +14,24 @@
             <input type="password" required md-no-asterisk name="password" ng-model="userData.password">
         </md-input-container>
 
-    	<md-button class="md-primary md-raised" ng-click="login()">Log In</md-button>
+        <md-button class="md-primary md-raised" ng-click="login()">Log In</md-button>
         <p>Don't have an account? <a href="#/register">Register</a></p>    
-        <a href="#/passwordrecovery">Forgot Password?</a>	
+        <a href="#/passwordrecovery">Forgot Password?</a>   
+    </md-content>
+</div> -->
+
+
+
+<div ng-init="handleClientLoad()" layout-align="center start" layout="row" layout-fill>
+    <md-content class="md-padding" layout-xs="column" layout="column" flex-gt-sm="30" flex="100">
+        <h1>Google log in</h1>
+        <md-button id="authorize-button" class="md-primary md-raised" style="display: none;" ng-click="handleAuthClick()">Authorize</md-button>
+        <md-button id="signout-button"  class="md-primary md-raised" style="display: none;" ng-click="handleSignoutClick()">Sign Out</md-button>
+
+        <pre id="content"></pre>
+        <!-- <button ng-click="getSheets()">Get Sheets</button>
+        <pre id="sheets"></pre> -->
+        <!-- <input type="text" ng-model="sheetTitle"> -->
+        <!-- <button ng-click="createSheet()">Create Sheet</button> -->
     </md-content>
 </div>

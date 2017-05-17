@@ -1,4 +1,4 @@
-myApp.factory('InspectionService', function(){
+app.factory('InspectionService', function(){
     return {
 	    address: "",
 		address_cont: "",

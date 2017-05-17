@@ -1,11 +1,8 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngCookies', 'ngMessages', 'ngMaterial', 'md.data.table', 'ngFileUpload', 'mdSteppers', 'signature', 'angularMoment']);
+var app = angular.module('app', ['ngRoute', 'ngCookies', 'ngMessages', 'ngMaterial', 'md.data.table', 'ngFileUpload', 'mdSteppers', 'signature', 'angularMoment']);
 
-myApp.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingProvider){
+app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingProvider){
 	
-	$locationProvider.hashPrefix('');
-
-
-
+	$locationProvider.html5Mode(false).hashPrefix('');
 
 
   // Extend the red theme with a different color and make the contrast color black instead of white.
@@ -36,7 +33,7 @@ myApp.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemin
 	$routeProvider
 	.when('/', {
 		templateUrl: 'assets/partials/login.html',
-		controller: 'userController',
+		controller: 'googleAPIController',
 		controllerAs: 'UC'
 	})
 	.when('/register', {
@@ -87,4 +84,5 @@ myApp.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemin
 	.otherwise({
 		redirectTo: '/'
 	})
+
 })

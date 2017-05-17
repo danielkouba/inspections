@@ -1,4 +1,4 @@
-myApp.factory('UserService', function(){
+app.factory('UserService', function(){
     return {
     	id: '',
     	name: '',

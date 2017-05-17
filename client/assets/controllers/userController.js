@@ -1,4 +1,4 @@
-myApp.controller('userController', function($location, $scope, $cookies, userFactory, UserService, InspectionService){
+app.controller('userController', function($location, $scope, $cookies, userFactory, UserService, InspectionService){
 
 
 
@@ -25,21 +25,21 @@ myApp.controller('userController', function($location, $scope, $cookies, userFac
 
 	}
 	$scope.inspectorView = function() {
-		$scope.checkLogin()
+		// $scope.checkLogin()
 
 		////////////////////////////////////////
 		// Handle redirects
-		if (!$cookies.get('type')){
-			$location.url('/');
-		} else if ($cookies.get('type') == 'admin') {
-			$location.url('/dashboard/admin');
-		} else if ($cookies.get('type') == 'lift_owner'){
-			$location.url('/dashboard/liftowner');
-		} else {
+		// if (!$cookies.get('type')){
+		// 	$location.url('/');
+		// } else if ($cookies.get('type') == 'admin') {
+		// 	$location.url('/dashboard/admin');
+		// } else if ($cookies.get('type') == 'lift_owner'){
+		// 	$location.url('/dashboard/liftowner');
+		// } else {
 			//The Correct Path
 
 			$scope.getInspections()	
-		}
+		// }
 	}
 	$scope.liftownerView = function(){
 		$scope.checkLogin()
@@ -55,7 +55,6 @@ myApp.controller('userController', function($location, $scope, $cookies, userFac
 		} else {
 			//The Correct Path
 			$scope.getUserLifts();
-
 		}
 	}
 	// END Constructors
@@ -178,15 +177,6 @@ myApp.controller('userController', function($location, $scope, $cookies, userFac
 	$scope.createPDF = function(inspection){
 		console.log(inspection)
 
-
-
-
-
-
-
-
-
-
 		var formArray = [[{text: 'Item', style: 'header'}, {text: 'Result', style: 'header'}
               ]];
         formArray.push(["Owner Name", inspection.lift_owner]);
@@ -223,11 +213,6 @@ myApp.controller('userController', function($location, $scope, $cookies, userFac
           //                       <td>Inspector ID</td>
           //                       <td>{{formData.inspector_id}}</td>
           //                   </tr>
-    
-
-
-
-
 
 
 

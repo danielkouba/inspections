@@ -1,4 +1,4 @@
-myApp.controller('navController', function($rootScope, $scope, $location, UserService, userFactory){
+app.controller('navController', function($rootScope, $scope, $location, UserService, userFactory){
 
 	$scope.UserService = UserService;
   $scope.currentNavItem = 'page1';

@@ -1,4 +1,4 @@
-myApp.controller('formController', function($location, $scope, $cookies, formFactory, $mdStepper, $mdDialog, userFactory, InspectionService){
+app.controller('formController', function($location, $scope, $cookies, formFactory, $mdStepper, $mdDialog, userFactory, InspectionService){
 
 	var getdate = function(){
 		var datenow = new Date();
@@ -99,9 +99,9 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
 	////////////////////////////////////////
 
 	$scope.formView = function(){
-        $scope.checkLogin()
+        // $scope.checkLogin()
         // Load clients
-        if($cookies.get('id')){
+        // if($cookies.get('id')){
             $scope.formData = {};
             console.log(InspectionService)
             if (InspectionService._id){
@@ -109,9 +109,9 @@ myApp.controller('formController', function($location, $scope, $cookies, formFac
                 $scope.formData = InspectionService;
             }
             getLiftOwners();
-        } else {
-            $location.url("/");
-        }
+        // } else {
+            // $location.url("/");
+        // }
 
 	}
 

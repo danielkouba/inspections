@@ -1,8 +1,7 @@
 ////////////////////////////////////////
 // User Factory
 //////////////////////////////////////// 
-
-myApp.factory('formFactory', ['$http', function($http){
+app.factory('formFactory', ['$http', function($http){
 	
 	var factory = {};
 	
