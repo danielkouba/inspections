@@ -18,28 +18,27 @@ app.controller('googleAPIController', function ($scope, $location, userFactory) 
        *  On load, called to load the auth2 library and API client library.
        */
       $scope.handleClientLoad = function() {
-        gapi.load('client:auth2', initClient);
+            gapi.load('client:auth2', initClient);
       }
 
       /**
        *  Initializes the API client library and sets up sign-in state
        *  listeners.
        */
-      function initClient() {
+    function initClient() {
         gapi.client.init({
-          discoveryDocs: DISCOVERY_DOCS,
-          clientId: CLIENT_ID,
-          scope: SCOPES
+            discoveryDocs: DISCOVERY_DOCS,
+            clientId: CLIENT_ID,
+            scope: SCOPES
         }).then(function () {
-          // Listen for sign-in state changes.
-          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+            // Listen for sign-in state changes.
+            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
-          // Handle the initial sign-in state.
-          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-        }).then(function(){
-          $location.url('/dashboard/inspector')
+            // Handle the initial sign-in state.
+            updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            
         });
-      }
+    }
 
       /**
        *  Called when the signed in status changes, to update the UI
@@ -47,13 +46,12 @@ app.controller('googleAPIController', function ($scope, $location, userFactory) 
        */
     function updateSigninStatus(isSignedIn) {
         if (isSignedIn) {
-          authorizeButton.style.display = 'none';
-          signoutButton.style.display = 'block';
-          listClients();
-          console.log("LOGGED IN GRINCH")
+            authorizeButton.style.display = 'none';
+            signoutButton.style.display = 'block';
+            listClients();
         } else {
-          authorizeButton.style.display = 'block';
-          signoutButton.style.display = 'none';
+            authorizeButton.style.display = 'block';
+            signoutButton.style.display = 'none';
         }
     }
 
@@ -62,6 +60,7 @@ app.controller('googleAPIController', function ($scope, $location, userFactory) 
        */
     $scope.handleAuthClick = function(event) {
         gapi.auth2.getAuthInstance().signIn();
+        $location.url('/dashboard/inspector')
     }
 
       /**
@@ -95,43 +94,60 @@ app.controller('googleAPIController', function ($scope, $location, userFactory) 
        */
     function listClients() {
         gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '1MjpNcizLsCFYBKU2ZI1ChF56ikUUIBkzlnJEX7dD1tQ',
-          range: 'Clients!A2:B',
+            spreadsheetId: '1MjpNcizLsCFYBKU2ZI1ChF56ikUUIBkzlnJEX7dD1tQ',
+            range: 'Clients!A2:B',
         }).then(function(response) {
-          var range = response.result;
-          if (range.values.length > 0) {
-            appendPre('Client, Lift');
-            for (i = 0; i < range.values.length; i++) {
-              var row = range.values[i];
-              // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(row[0] + ', ' + row[1]);
+            var range = response.result;
+            if (range.values.length > 0) {
+                // appendPre('Client, Lift');
+                for (i = 0; i < range.values.length; i++) {
+                    var row = range.values[i];
+                    // Print columns A and E, which correspond to indices 0 and 4.
+                    // appendPre(row[0] + ', ' + row[1]);
+                }
+            } else {
+                // appendPre('No data found.');
             }
-          } else {
-            appendPre('No data found.');
-          }
         }, function(response) {
-          appendPre('Error: ' + response.result.error.message);
+            // appendPre('Error: ' + response.result.error.message);
         });
         // console.log("This is that  one spreadsheet")
         // console.log(gapi.client.sheets.spreadsheets.get({spreadsheetId:'1xtHRRYTc2IwzLwbgFzBLq_J_v4PgcUHTIAogfkA5Z2k'}))
-      }
+    }
 
+    ////////////////////////////////////////
     // Get all Spreadsheets
     $scope.getSheets = function(){
         gapi.client.request({
             'path':  'https://www.googleapis.com/drive/v2/files'
-         }).then(function(response) {
-            console.log(response.result);
+        }).then(function(response) {
+            // console.log(response.result);
             var range = response.result.items;
-            for(var i = 0; i < range.length; i++){
-                var sheet = range[i];
-                appendSheet(sheet.title + " " + sheet.createdDate)
-            }
+            return range;
+            // for(var i = 0; i < range.length; i++){
+            //     var sheet = range[i];
+            //     // appendSheet(sheet.title + " " + sheet.createdDate)
+            //     if (sheet.title == "ALI - Lift Inspections"){
+            //         $scope.mySheet = sheet;
+            //         console.log("found the sheet")
+            //         console.log($scope.mySheet)
+            //     }
+            // }
+            // ////////////////////////////////////////
+            // // Create a new spread sheet if none is found
+            // if(!$scope.mySheet){
+            //     console.log("We need to create a new base spreadsheet")
+            // }
+             console.log(response)
+
         }, function(reason) {
             console.log('Error: ' + reason.result.error.message);
         });
     }
+    // 
+    ////////////////////////////////////////
 
+    ////////////////////////////////////////
     // Create a new Spread Sheet
     $scope.createSheet = function(){
         if(!$scope.sheetTitle){
@@ -139,34 +155,60 @@ app.controller('googleAPIController', function ($scope, $location, userFactory) 
         }
         data = {'properties': {'title': $scope.sheetTitle}};
         sheet = gapi.client.sheets.spreadsheets.create(body=data).execute(function(err, response){
-                if (err) {console.log(err)};
-                var response = JSON.parse(response);
-                duplicateSheet(response[0].result.spreadsheetId);        
-            })
-
+            if (err) {console.log(err)};
+            var response = JSON.parse(response);
+            duplicateSheet(response[0].result.spreadsheetId);        
+        })
     }
-
 
     // This duplicates the Inspector sheet
     var duplicateSheet= function(copyToID) {
+        //Create request
         var request = {
-                    spreadsheetId: '1xtHRRYTc2IwzLwbgFzBLq_J_v4PgcUHTIAogfkA5Z2k',
-                    sheetId: 1969539565,
-                    resource: {
-                        title: "Inspector Sheet",
-                        destinationSpreadsheetId: copyToID
-                    }
-                }
-                gapi.client.sheets.spreadsheets.sheets.copyTo(body = request).execute( function(err, resp){
-                    if (err){
-                        console.log("There was an error:");
-                        console.log(err);
-                        return;
-                    }
+            spreadsheetId: '1xtHRRYTc2IwzLwbgFzBLq_J_v4PgcUHTIAogfkA5Z2k',
+            sheetId: 1969539565,
+            resource: {
+                title: "Inspector Sheet",
+                destinationSpreadsheetId: copyToID
+            }
+        }
+        // Perform request
+        gapi.client.sheets.spreadsheets.sheets.copyTo(body = request).execute( function(err, resp){
+            if (err){
+                console.log("There was an error:");
+                console.log(err);
+                return;
+            }
 
-                    console.log('Success');
-                })
+            console.log('Success');
+        })
     }
 
 
+    // Append a value to a spreadsheet of a a certain name
+    $scope.addValue = function(){
+        // Find all sheets
+        for(var i = 0; i < $scope.sheets.length; i++){
+            var sheet = $scope.sheets[i];
+            // Enter the name of the sheet you want to find here
+            if (sheet.title == "Untitled spreadsheet"){
+                $scope.editing = sheet.id
+            }
+        }
+        // Create request
+        var spreadsheet_id = $scope.editing;
+        var range_name = 'Clients!A2:B';
+        var dimension = 'ROWS';
+        var value_input_option =  'USER_ENTERED';
+        var values = [["COOL BOSS","HV900", , "High FIVE"]];
+        var request = {spreadsheetId:spreadsheet_id, range:range_name, valueInputOption:value_input_option, values:values}
+        // Perform request
+        gapi.client.sheets.spreadsheets.values.append(request).execute(function(err,response){
+            if(err){
+                console.log(err);
+                return;
+            }
+            console.log(response);
+        });
+    }
 });	

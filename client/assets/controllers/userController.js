@@ -38,7 +38,8 @@ app.controller('userController', function($location, $scope, $cookies, userFacto
 		// } else {
 			//The Correct Path
 
-			$scope.getInspections()	
+			$scope.getInspections();
+			// gapi.auth2.getAuthInstance().isSignedIn	
 		// }
 	}
 	$scope.liftownerView = function(){

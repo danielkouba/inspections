@@ -5,7 +5,7 @@ app.controller('formController', function($location, $scope, $cookies, formFacto
 		var month = (datenow.getMonth() + 1).toString();
 		var day = datenow.getDate().toString();
 		var year = datenow.getFullYear().toString();
-
+        
 		day = day.length == 1 ? "0" + day : day;
 		month = month.length == 1 ? "0" + month : month;
 		return year + "-" + month + "-" + day
