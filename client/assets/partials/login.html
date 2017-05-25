@@ -22,16 +22,40 @@
 
 
 
-<div ng-init="handleClientLoad()" layout-align="center start" layout="row" layout-fill>
-    <md-content class="md-padding" layout-xs="column" layout="column" flex-gt-sm="30" flex="100">
-        <h1>Google log in</h1>
-        <md-button id="authorize-button" class="md-primary md-raised" style="display: none;" ng-click="handleAuthClick()">Authorize</md-button>
-        <md-button id="signout-button"  class="md-primary md-raised" style="display: none;" ng-click="handleSignoutClick()">Sign Out</md-button>
+<div>
+    <h2>GOOGLE ME</h2>
+    <md-button ng-click="doSomething()"> DO SOMETHING </md-button>
+    <md-button ng-click="gotoMain()">GOTO Main</md-button>
 
-        <pre id="content"></pre>
-        <!-- <button ng-click="getSheets()">Get Sheets</button>
-        <pre id="sheets"></pre> -->
-        <!-- <input type="text" ng-model="sheetTitle"> -->
-        <!-- <button ng-click="createSheet()">Create Sheet</button> -->
-    </md-content>
+    <cm-google-sign-in click-handler='clickHandler' sign-in-listener='signInListener' user-listener='userListener' ng-if="!isSignedIn">
+        <button type="button">Login</button>
+    </cm-google-sign-in>
+
+    <button type="button" ng-click="logout()" ng-if="isSignedIn">Logout</button>
+    <button type="button" ng-click="disconnect()" ng-if="isSignedIn">Disconnect</button>
+    <div ng-if="isSignedIn" style="margin-top: 20px">
+      <div>Hello {{user}}!</div>
+      <div>
+        <button type="button" ng-click="getViewedFile()">Show last seen drive file </button>
+        <button type="button" ng-click="getModifiedFile()">Show last modified drive file</button>
+        <button type="button" cm-google-picker locale='en' views='views()' on-picked='onPicked'>Open Google Picker</button>
+      </div>
+      <div style="float:left;width:33%">
+        <ul ng-repeat="file in viewedFile">
+          <li>{{file.title}} <a target="_blank" href="{{file.alternateLink}}">LINK</a></li>
+        </ul>
+      </div>
+      <div style="float:left;width:33%">
+        <ul ng-repeat="file in modifiedFile">
+          <li>{{file.title}} <a target="_blank" href="{{file.alternateLink}}">LINK</a></li>
+        </ul>
+      </div>
+      <div style="float:left;width:33%">
+          With the picker you have selected: <span ng-if="filePicked">{{pickedFile.name}} <a target="_blank" href="{{pickedFile.url}}">LINK</a></span>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="../dist/angular-google-client.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 </div>

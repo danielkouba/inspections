@@ -1,9 +1,8 @@
-var app = angular.module('app', ['ngRoute', 'ngCookies', 'ngMessages', 'ngMaterial', 'md.data.table', 'ngFileUpload', 'mdSteppers', 'signature', 'angularMoment']);
+var app = angular.module('app', ['ngRoute', 'ngCookies', 'ngMessages', 'ngMaterial', 'md.data.table', 'ngFileUpload', 'mdSteppers', 'signature', 'angularMoment', 'cmGoogleApi']);
 
-app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingProvider){
+app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingProvider, googleClientProvider){
 	
 	$locationProvider.html5Mode(false).hashPrefix('');
-
 
 	////////////////////////////////////////
 	// Define Theme
@@ -28,12 +27,31 @@ app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingP
 
 
     ////////////////////////////////////////
+    // Set Up Google API
+    ////////////////////////////////////////
+	googleClientProvider
+		.loadGoogleAuth({
+			cookie_policy: 'single_host_origin',
+			fetch_basic_profile: true
+		})
+		.setClientId('137889948897-g2tu5039lemhpri66imaqbhj5892si5s.apps.googleusercontent.com')
+	    .addScope('https://www.googleapis.com/auth/spreadsheets')
+	    .addScope('https://www.googleapis.com/auth/drive')
+	    .addScope('https://www.googleapis.com/auth/drive.file')
+		.addApi('drive', 'v2')
+		.loadPickerLibrary();
+	// END Set Up Google API
+	////////////////////////////////////////
+
+
+
+    ////////////////////////////////////////
     // Routes
     ////////////////////////////////////////
 	$routeProvider
 	.when('/', {
 		templateUrl: 'assets/partials/login.html',
-		controller: 'userController',
+		controller: 'googleController',
 		controllerAs: 'UC'
 	})
 	.when('/register', {

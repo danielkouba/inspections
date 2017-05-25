@@ -39,8 +39,8 @@ app.use(session(sessionConfig));
 ////////////////////////////////////////
 // Import Routes and Connect Mongoose
 ////////////////////////////////////////
-require('./server/config/mongoose.js');
-require('./server/config/routes')(app);
+// require('./server/config/mongoose.js');
+// require('./server/config/routes')(app);
 
 
 ////////////////////////////////////////
