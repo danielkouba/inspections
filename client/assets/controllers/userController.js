@@ -1,6 +1,4 @@
-app.controller('userController', function($location, $scope, $cookies, userFactory, UserService, InspectionService){
-
-
+app.controller('userController', function($location, $scope, $cookies, userFactory, UserService, InspectionService, googleService){
 
 	$scope.InspectionService = InspectionService;
 
@@ -24,23 +22,24 @@ app.controller('userController', function($location, $scope, $cookies, userFacto
 		}
 
 	}
+
+
+
+
+
+
 	$scope.inspectorView = function() {
-		// $scope.checkLogin()
+		console.log("Hey mister");
+		// googleService.loggedIn()
+		gapi.load('client:auth2', googleService.initClient());
+        googleService.getSingleSheet('ALI - Lift Inspection').then(function(result){
+        	console.log("WINNER")
+        	console.log(result);
+        }, function(reason){
+        	console.log("BAD")
+        	console.log(reason)
+        })
 
-		////////////////////////////////////////
-		// Handle redirects
-		// if (!$cookies.get('type')){
-		// 	$location.url('/');
-		// } else if ($cookies.get('type') == 'admin') {
-		// 	$location.url('/dashboard/admin');
-		// } else if ($cookies.get('type') == 'lift_owner'){
-		// 	$location.url('/dashboard/liftowner');
-		// } else {
-			//The Correct Path
-
-			$scope.getInspections();
-			// gapi.auth2.getAuthInstance().isSignedIn	
-		// }
 	}
 	$scope.liftownerView = function(){
 		$scope.checkLogin()

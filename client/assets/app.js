@@ -34,7 +34,7 @@ app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingP
 	.when('/', {
 		templateUrl: 'assets/partials/login.html',
 		controller: 'googleAPIController',
-		controllerAs: 'UC'
+		controllerAs: 'GC'
 	})
 	.when('/register', {
 		templateUrl: 'assets/partials/register.html',

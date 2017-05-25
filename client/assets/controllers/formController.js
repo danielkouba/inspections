@@ -1,4 +1,4 @@
-app.controller('formController', function($location, $scope, $cookies, formFactory, $mdStepper, $mdDialog, userFactory, InspectionService){
+app.controller('formController', function($location, $scope, $cookies, formFactory, $mdStepper, $mdDialog, userFactory, InspectionService, googleService){
 
 	var getdate = function(){
 		var datenow = new Date();

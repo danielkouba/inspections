@@ -37,13 +37,13 @@
 			<div class="nav_logo"></div>
 		</div>
 	 -->
-		<div class="nav-blue" layout="row" layout-align="center start">	
+		<div class="nav-blue" layout="row" layout-align="center start" ng-cloak>	
 			<a ng-href="#/"><div class="nav-logo"></div></a>
 		</div>
 		<div class="nav-red"></div>
 
 
-		<div ng-view="" layout-gt-xs="row" class="md-padding margin-top" layout-fill layout="column" layout-align="center start"></div>
+		<div ng-view="" layout-gt-xs="row" class="md-padding margin-top" layout-fill layout="column" layout-align="center start" ng-cloak></div>
 
 		<!-- Bower Components	 -->
 		<script src="/bower_components/angular/angular.js"></script>
@@ -63,9 +63,9 @@
 		<script src="/bower_components/angular-moment/angular-moment.js"></script>
 		<script src="/bower_components/pdfmake/build/pdfmake.min.js"></script>
 		<script src="/bower_components/pdfmake/build/vfs_fonts.js"></script>
-		<script src="https://apis.google.com/js/api.js"></script>
 		<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.48.min.js"></script>
-
+		<script src="https://apis.google.com/js/api.js"></script>
+		
 		<!--  App  -->
 		<script src="assets/app.js"></script>
 		<!--  Factories  -->
@@ -79,9 +79,11 @@
 		<!-- <script src="assets/controllers/productController.js"></script> -->
 		<script src="assets/controllers/navController.js"></script>
 		<!-- Services -->
+
 		<script src="assets/services/userService.js"></script>
 		<script src="assets/services/inspectionService.js"></script>
 		<script src="assets/services/uploadService.js"></script>
+		<script src="assets/services/googleService.js"></script>
 		<!-- Filters	 -->
 		<!-- <script src="assets/filters/searchArrayFilter.js"></script> -->
 
