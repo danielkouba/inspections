@@ -1,12 +1,11 @@
 app.controller('navController', function($rootScope, $scope, $location, UserService, userFactory){
 
-	$scope.UserService = UserService;
+  $scope.UserService = UserService;
   $scope.currentNavItem = 'page1';
 	
   $scope.goto = function(str){
-    console.log(str);
-		
-		$location.url("/"+str);
+    console.log(str);	
+	$location.url("/"+str);
   }
   
   

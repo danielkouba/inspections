@@ -5,35 +5,35 @@ app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingP
 	$locationProvider.html5Mode(false).hashPrefix('');
 
 
-  // Extend the red theme with a different color and make the contrast color black instead of white.
-  // For example: raised button text will be black instead of white.
-  var aliBlue = $mdThemingProvider.extendPalette('blue', {
-    '500': '#0261a6',
-    'contrastDefaultColor': 'light'
-  });
+	////////////////////////////////////////
+	// Define Theme
+	////////////////////////////////////////
 
-  // Register the new color palette map with the name <code>neonRed</code>
-  $mdThemingProvider.definePalette('aliBlue', aliBlue);
+	// Extend the red theme with a different color and make the contrast color black instead of white.
+	// For example: raised button text will be black instead of white.
+	var aliBlue = $mdThemingProvider.extendPalette('blue', {
+	    '500': '#0261a6',
+	    'contrastDefaultColor': 'light'
+	});
 
-  // Use that theme for the primary intentions
-  $mdThemingProvider.theme('default')
-    .primaryPalette('aliBlue');
-	
-	// $httpProvider.interceptors.push(function($q, $location){
-	// 	return {
-	// 		'responseError' : function(rejection){
-	// 			if (rejection.status == 401){
-	// 				$location.url('/');
-	// 			}
-	// 			return $q.reject(rejection);
-	// 		}
-	// 	}
-	// });
+  	// Register the new color palette map with the name <code>neonRed</code>
+  	$mdThemingProvider.definePalette('aliBlue', aliBlue);
 
+  	// Use that theme for the primary intentions
+  	$mdThemingProvider.theme('default')
+    	.primaryPalette('aliBlue');
+    // END Define Theme
+    ////////////////////////////////////////
+
+
+
+    ////////////////////////////////////////
+    // Routes
+    ////////////////////////////////////////
 	$routeProvider
 	.when('/', {
 		templateUrl: 'assets/partials/login.html',
-		controller: 'googleAPIController',
+		controller: 'userController',
 		controllerAs: 'UC'
 	})
 	.when('/register', {
@@ -84,5 +84,7 @@ app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingP
 	.otherwise({
 		redirectTo: '/'
 	})
+	// END Routes
+	////////////////////////////////////////
 
 })
