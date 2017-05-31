@@ -1,4 +1,4 @@
-app.controller('formController', function($location, $scope, $cookies, formFactory, $mdStepper, $mdDialog, userFactory, InspectionService, googleService){
+app.controller('formController', function($location, $scope, $cookies, formFactory, $mdStepper, $mdDialog, userFactory, InspectionService, InspectionsService, LiftService, ClientService, SpreadsheetService){
 
 	var getdate = function(){
 		var datenow = new Date();
@@ -99,19 +99,29 @@ app.controller('formController', function($location, $scope, $cookies, formFacto
 	////////////////////////////////////////
 
 	$scope.formView = function(){
-        // $scope.checkLogin()
-        // Load clients
-        // if($cookies.get('id')){
             $scope.formData = {};
-            console.log(InspectionService)
-            if (InspectionService._id){
-                console.log("EDITING")
-                $scope.formData = InspectionService;
-            }
-            getLiftOwners();
-        // } else {
-            // $location.url("/");
-        // }
+            // console.log(InspectionService)
+
+            console.log("SPREAD SHEET SERVICE")
+            SpreadsheetService.list().then(function(spreadsheet){
+                console.log(spreadsheet)
+
+                ClientService.list(spreadsheet.id).then(function(result){
+                    console.log(result.data)
+                    $scope.clients = result.data;
+                });
+
+
+            })
+            console.log("SPREAD SHEET SERVICE")
+
+
+
+            // if (InspectionService._id){
+            //     console.log("EDITING")
+            //     $scope.formData = InspectionService;
+            // }
+            // getLiftOwners();
 
 	}
 
@@ -189,14 +199,16 @@ app.controller('formController', function($location, $scope, $cookies, formFacto
     // Owner Drop Down Handler
     ////////////////////////////////////////
     $scope.selectedOwnerChange = function(item) {
-        console.log('Item changed to ' + item);
-        $scope.formData.lift_owner = item.company;
-        $scope.formData.address = item.address;
-        $scope.formData.city = item.city;
-        $scope.formData.state = item.state;
-        $scope.formData.zipcode = item.zip_code;
-        $scope.formData.email = item.email;
-        $scope.lifts = item._lifts
+        console.log('Item changed to ' + item.Company);
+        $scope.formData.lift_owner = item.Company;
+        $scope.formData.address = item.Address;
+        $scope.formData.city = item.City;
+        $scope.formData.state = item.State;
+        $scope.formData.zipcode = item.ZipCode;
+        $scope.formData.email = item.Email;
+        $scope.formData.phone = item.Phone;
+        $scope.formData.fax = item.Fax;
+        // $scope.lifts = item._lifts
     }
 
     ////////////////////////////////////////

@@ -24,7 +24,6 @@ app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingP
     // END Define Theme
     ////////////////////////////////////////
 
-
     ////////////////////////////////////////
     // Set Up Google API
     ////////////////////////////////////////
@@ -42,8 +41,6 @@ app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingP
 		.loadPickerLibrary();
 	// END Set Up Google API
 	////////////////////////////////////////
-
-
 
     ////////////////////////////////////////
     // Routes

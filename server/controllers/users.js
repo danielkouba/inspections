@@ -4,8 +4,6 @@
 
 function usersController(){
 
-
-
 	////////////////////////////////////////
 	// Index Route
 	this.index = function(req,res){

@@ -21,13 +21,13 @@
                       md-selected-item="formData.selectedItem"
                       md-search-text-change="searchTextChange(formData.searchText)"
                       md-search-text="formData.searchText"
-                      md-selected-item-change="selectedOwnerChange(owner)"
-                      md-items="owner in lift_owners"
-                      md-item-text="owner.company"
+                      md-selected-item-change="selectedOwnerChange(client)"
+                      md-items="client in clients"
+                      md-item-text="client.Company"
                       md-min-length="0"
                       placeholder="Choose a business">
                         <md-item-template>
-                          <span md-highlight-text="formData.searchText" md-highlight-flags="^i">{{owner.company}}</span>    
+                          <span md-highlight-text="formData.searchText" md-highlight-flags="^i">{{client.Company}}</span>    
                         </md-item-template>
                         <md-not-found>
                           No states matching "{{formData.searchText}}" were found.
