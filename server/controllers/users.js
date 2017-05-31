@@ -1,6 +1,6 @@
-// ////////////////////////////////////////
-// // User Server Side Controller
-// ////////////////////////////////////////
+////////////////////////////////////////
+// User Server Side Controller
+////////////////////////////////////////
 // var mongoose = require('mongoose');
 // var User = mongoose.model('User');
 // var bcrypt = require('bcrypt');
@@ -19,24 +19,45 @@
 // 	}
 // }))
 
+function usersController(){
 
 
 
-// function usersController(){
-// 	////////////////////////////////////////
-// 	// Index Route
-// 	this.index = function(req,res){
-// 		User.find({}, function(err,users){
-// 			res.json(users);
-// 		})
-// 	}
-// 	// END Index Route
-// 	////////////////////////////////////////
+	////////////////////////////////////////
+	// Index Route
+	this.index = function(req,res){
+		if (!req.session){
+			res.json({'cool':'beans'});	
+		} else {
+			res.json(req.session);
+		}
+	}
+	// END Index Route
+	////////////////////////////////////////
+
+	////////////////////////////////////////
+	//  Save Data in Session
+ 	this.save = function(req, res){
+ 		// Save request to session
+ 		req.session[req.body.title] = req.body.data;
+ 		req.session.save();
+ 		res.send(req.session);
+ 	}
+	//  END Save Data in Session
+	////////////////////////////////////////
 
 
-// 	////////////////////////////////////////
-// 	// Find by type
-// 	////////////////////////////////////////
+
+
+
+
+
+
+
+
+ 	////////////////////////////////////////
+ 	// Find by type
+ 	////////////////////////////////////////
 // 	this.getLiftOwners = function(req,res){
 // 		User.find({"type": "lift_owner"}).populate('_lifts').exec(function(err,user){
 // 			if(!user){
@@ -293,5 +314,5 @@
 // 		});
 
 // 	}
-// }
-// module.exports = new usersController()
+}
+module.exports = new usersController()

@@ -3,8 +3,7 @@
 ////////////////////////////////////////
 // Import Packages
 ////////////////////////////////////////
-var mongoose 	= require('mongoose'),
-	express  	= require('express'),
+var	express  	= require('express'),
 	session  	= require('express-session'),
 	bp		 	= require('body-parser'),
 	path	 	= require('path'),
@@ -40,7 +39,7 @@ app.use(session(sessionConfig));
 // Import Routes and Connect Mongoose
 ////////////////////////////////////////
 // require('./server/config/mongoose.js');
-// require('./server/config/routes')(app);
+require('./server/config/routes')(app);
 
 
 ////////////////////////////////////////

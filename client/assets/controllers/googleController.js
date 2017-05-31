@@ -19,12 +19,12 @@ app.controller('googleController', function ($scope, cmAuthService, cmApiService
         // and https://developers.google.com/identity/protocols/OAuth2WebServer
     };
 
-  // Listen for sign-in state changes. See https://developers.google.com/identity/sign-in/web/listeners
+    // Listen for sign-in state changes. See https://developers.google.com/identity/sign-in/web/listeners
     $scope.signInListener = function(val){
         $scope.isSignedIn = val;
     };
 
-  // Listen for changes to current user. See https://developers.google.com/identity/sign-in/web/listeners
+    // Listen for changes to current user. See https://developers.google.com/identity/sign-in/web/listeners
     $scope.userListener = function(user){
         $scope.user = user.getBasicProfile().getName();
     };
@@ -69,7 +69,7 @@ app.controller('googleController', function ($scope, cmAuthService, cmApiService
         });
     };
 
-    // Make an api call using GAPI direclty
+    // Make an api call using GAPI directly
     $scope.getModifiedFile = function(){
         var driveOptions = {
             'maxResults': 10,
@@ -86,8 +86,8 @@ app.controller('googleController', function ($scope, cmAuthService, cmApiService
         });
     };
 
-  // Define some views for the picker.
-  // See https://developers.google.com/picker/docs/reference
+    // Define some views for the picker.
+    // See https://developers.google.com/picker/docs/reference
     $scope.views = function(){
         var docsView = new google.picker.DocsView(google.picker.ViewId.DOCS);
         docsView.setParent('ROOT');
@@ -104,6 +104,10 @@ app.controller('googleController', function ($scope, cmAuthService, cmApiService
         $scope.filePicked = true;
     };
 
+
+//***************************************************
+// TOKEN EXAMPLE
+//***************************************************
     $scope.test = function(){
         googleClient.afterApiLoaded().then(function () {
             console.log(gapi.auth.getToken());

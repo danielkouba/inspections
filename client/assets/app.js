@@ -25,7 +25,6 @@ app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingP
     ////////////////////////////////////////
 
 
-
     ////////////////////////////////////////
     // Set Up Google API
     ////////////////////////////////////////
@@ -39,6 +38,7 @@ app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingP
 	    .addScope('https://www.googleapis.com/auth/drive')
 	    .addScope('https://www.googleapis.com/auth/drive.file')
 		.addApi('drive', 'v2')
+		.addApi('sheets', 'v4')
 		.loadPickerLibrary();
 	// END Set Up Google API
 	////////////////////////////////////////
@@ -51,7 +51,7 @@ app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingP
 	$routeProvider
 	.when('/', {
 		templateUrl: 'assets/partials/login.html',
-		controller: 'googleController',
+		controller: 'userController',
 		controllerAs: 'UC'
 	})
 	.when('/register', {
