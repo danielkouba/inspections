@@ -1,40 +1,58 @@
-var app = angular.module('app', ['ngRoute', 'ngCookies', 'ngMessages', 'ngMaterial', 'md.data.table', 'ngFileUpload', 'mdSteppers', 'signature', 'angularMoment']);
+var app = angular.module('app', ['ngRoute', 'ngCookies', 'ngMessages', 'ngMaterial', 'md.data.table', 'ngFileUpload', 'mdSteppers', 'signature', 'angularMoment', 'cmGoogleApi']);
 
-app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingProvider){
+app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingProvider, googleClientProvider){
 	
 	$locationProvider.html5Mode(false).hashPrefix('');
 
+	////////////////////////////////////////
+	// Define Theme
+	////////////////////////////////////////
 
-  // Extend the red theme with a different color and make the contrast color black instead of white.
-  // For example: raised button text will be black instead of white.
-  var aliBlue = $mdThemingProvider.extendPalette('blue', {
-    '500': '#0261a6',
-    'contrastDefaultColor': 'light'
-  });
+	// Extend the red theme with a different color and make the contrast color black instead of white.
+	// For example: raised button text will be black instead of white.
+	var aliBlue = $mdThemingProvider.extendPalette('blue', {
+	    '500': '#0261a6',
+	    'contrastDefaultColor': 'light'
+	});
 
-  // Register the new color palette map with the name <code>neonRed</code>
-  $mdThemingProvider.definePalette('aliBlue', aliBlue);
+  	// Register the new color palette map with the name <code>neonRed</code>
+  	$mdThemingProvider.definePalette('aliBlue', aliBlue);
 
-  // Use that theme for the primary intentions
-  $mdThemingProvider.theme('default')
-    .primaryPalette('aliBlue');
-	
-	// $httpProvider.interceptors.push(function($q, $location){
-	// 	return {
-	// 		'responseError' : function(rejection){
-	// 			if (rejection.status == 401){
-	// 				$location.url('/');
-	// 			}
-	// 			return $q.reject(rejection);
-	// 		}
-	// 	}
-	// });
+  	// Use that theme for the primary intentions
+  	$mdThemingProvider.theme('default')
+    	.primaryPalette('aliBlue');
+    // END Define Theme
+    ////////////////////////////////////////
 
+
+    ////////////////////////////////////////
+    // Set Up Google API
+    ////////////////////////////////////////
+	googleClientProvider
+		.loadGoogleAuth({
+			cookie_policy: 'single_host_origin',
+			fetch_basic_profile: true
+		})
+		.setClientId('137889948897-g2tu5039lemhpri66imaqbhj5892si5s.apps.googleusercontent.com')
+	    .addScope('https://www.googleapis.com/auth/spreadsheets')
+	    .addScope('https://www.googleapis.com/auth/drive')
+	    .addScope('https://www.googleapis.com/auth/drive.file')
+		.addApi('drive', 'v2')
+		.addApi('sheets', 'v4')
+		.loadPickerLibrary();
+	// END Set Up Google API
+	////////////////////////////////////////
+
+
+
+    ////////////////////////////////////////
+    // Routes
+    ////////////////////////////////////////
 	$routeProvider
 	.when('/', {
 		templateUrl: 'assets/partials/login.html',
-		controller: 'googleAPIController',
-		controllerAs: 'GC'
+		controller: 'userController',
+		controllerAs: 'UC'
 	})
 	.when('/register', {
 		templateUrl: 'assets/partials/register.html',
@@ -84,5 +102,7 @@ app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingP
 	.otherwise({
 		redirectTo: '/'
 	})
+	// END Routes
+	////////////////////////////////////////
 
 })

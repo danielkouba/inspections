@@ -25,6 +25,7 @@
     "material-steppers": "^2.0.0",
     "angular-signature": "^1.0.3",
     "angular-moment": "^1.0.1",
-    "pdfmake": "^0.1.28"
+    "pdfmake": "^0.1.28",
+    "angular-google-client": "^2.0.4"
   }
 }

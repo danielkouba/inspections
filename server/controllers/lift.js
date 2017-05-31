@@ -3,12 +3,13 @@
 // ////////////////////////////////////////
 
 
-// // var mongoose = require('mongoose');
-// // var Inspection = mongoose.model('Inspection');
-// // var Lift = mongoose.model('Lift');
-// // var User = mongoose.model('User');
 
-// // function inspectionsController(){
+// var mongoose = require('mongoose');
+// var Inspection = mongoose.model('Inspection');
+// var Lift = mongoose.model('Lift');
+// var User = mongoose.model('User');
+
+// function inspectionsController(){
 
 // 	////////////////////////////////////////
 // 	// Index Route
