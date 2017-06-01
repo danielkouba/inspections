@@ -10,10 +10,10 @@
         
             <!-- FIRST FORM STEP -->
 
-            <md-step md-label="Customer Info">
+            <md-step>
                 <md-step-body >
                     <md-content class="md-padding" layout-xs="column" layout="column">
-                    <h2 class="md-margin">Customer Info</h2>
+                    <!-- <h2 class="md-margin">Customer Info</h2> -->
                     <!-- SELECT Business AutoComplete -->
                     <md-autocomplete
                       ng-disabled="formData.isDisabled"
@@ -138,11 +138,11 @@
                         <input required md-no-asterisk name="operator" ng-model="formData.operator">
                     </md-input-container>
 
-                    
+<!--                     
                     <md-input-container class="md-block">
                         <label>Employee ID #</label>
                         <input required md-no-asterisk name="employee_id" ng-model="formData.employee_id">
-                    </md-input-container>
+                    </md-input-container> -->
 
                     <!-- SELECT Lift AutoComplete -->
                     </md-content>
@@ -153,14 +153,12 @@
                 </md-step-actions>
             </md-step>
 
-
-
             <!-- SECOND FORM STEP -->
-            <md-step md-label="Lift Info">
+            <md-step>
                 <md-step-body layout="column">
 
                     <md-content class="md-padding" layout-xs="column" layout="column" >
-                        <h2 class="md-margin">Lift Info</h2>
+                        <!-- <h2 class="md-margin">Lift Info</h2> -->
                     <md-autocomplete
                       ng-disabled="formData.isDisabled"
                       md-no-cache="formData.noCache"
@@ -196,8 +194,6 @@
                             <input required md-no-asterisk name="mfg_serial" ng-model="formData.mfg_serial">
                         </md-input-container>
 
-
-
                         <md-input-container class="md-block">
                             <label>Lift Capacity</label>
                             <input required md-no-asterisk name="lift_capacity" ng-model="formData.lift_capacity">
@@ -222,6 +218,23 @@
                             <label>Lift Design</label>
                             <input required md-no-asterisk name="lift_design" ng-model="formData.lift_design">
                         </md-input-container>
+                    </md-content>
+                </md-step-body>
+                <!-- SECOND STEP ACTIONS -->
+                <md-step-actions layout="row" layout-align="space-around center">
+                    <md-button class="md-primary" ng-click="$ctrl.previousStep();">Back</md-button>
+                    <md-button class="md-primary md-raised" ng-click="nextPage()">Continue</md-button>
+                </md-step-actions>
+            </md-step>
+
+            <md-step>
+                <md-step-body>
+
+                    <md-content class="md-padding" layout-xs="column" layout="column" flex="66">
+                    <!-- <h2 class="md-margin">Appendix C</h2> -->
+                      <!-- This table uses this dependency https://github.com/daniel-nagy/md-data-table   -->
+                      <md-table-container>
+
 
                         <p>I certify that I meet the requirements of ANSI/All ALOIM:2008 paragraph 5.2 for qualified lift inspector and that I have successfully completed the training for qualified lift inspector as described in ANSI/All ALOIM:2008 paragraph 5.3</p>
                         
@@ -261,11 +274,11 @@
             <!-- THIRD FORM STEP  -->
 
 
-            <md-step md-label="Appendix C">
+            <md-step>
                 <md-step-body>
 
                     <md-content class="md-padding" layout-xs="column" layout="column" flex="66">
-                    <h2 class="md-margin">Appendix C</h2>
+                    <!-- <h2 class="md-margin">Appendix C</h2> -->
                       <!-- This table uses this dependency https://github.com/daniel-nagy/md-data-table   -->
                       <md-table-container>
                         <table md-table>
@@ -315,7 +328,6 @@
                             </tr>
                             <tr md-row ng-show="!item.expanded" ng-repeat-end="">
                               <td md-cell colspan="5">
-
                                     <textarea style="margin: 10px;" name="" id="" cols="80" rows="10"></textarea>  
                               </td>
                             </tr>
@@ -334,10 +346,10 @@
 
 
             <!-- FOURTH FORM STEP -->
-            <md-step md-label="Appendix D">
+            <md-step>
                 <md-step-body>
                     <md-content class="md-padding" layout-xs="column" layout="column">
-                    <h2 class="md-margin">Appendix D</h2>
+                    <!-- <h2 class="md-margin">Appendix D</h2> -->
                     <!-- This table uses this dependency https://github.com/daniel-nagy/md-data-table   -->
                       <md-table-container>
                         <table md-table>
@@ -439,11 +451,11 @@
             </md-step>
             <!-- Other steps if needed ... -->
 
-            <md-step md-label="Review and Submit">
+            <md-step>
                 <md-step-body>
 
                     <md-content class="md-padding" layout-xs="column" layout="column">
-                        <h2 class="md-margin">Review and Submit</h2>
+                        <!-- <h2 class="md-margin">Review and Submit</h2> -->
                         <table class="table-results">
                             <tr>
                                 <th></th>

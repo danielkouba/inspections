@@ -1,8 +1,6 @@
 app.factory('SpreadsheetService', function($q, $http, cmAuthService, cmApiService, googleClient) {
     var spreadsheet = {}
-
-
-
+    
     ////////////////////////////////////////
     //Test for empty on object
     var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -32,9 +30,6 @@ app.factory('SpreadsheetService', function($q, $http, cmAuthService, cmApiServic
     }
     //Test for empty on object
     ////////////////////////////////////////
-
-
-
 
 
     return {

@@ -1,4 +1,4 @@
-app.factory('InspectionsService', function($q, $http) {
+app.factory('InspectionsService', function($q, $http, SpreadsheetService) {
     var inspections = {};
 
     var formatData = function(arr){
@@ -15,6 +15,21 @@ app.factory('InspectionsService', function($q, $http) {
         	return returnArray
     	}
 
+        var formKeys = ["searchText", "selectedItem", "noCache", "lift_owner", "address", "city", "state", "zipcode", "email", "phone", "fax", "address_cont", "operator", "employee_id", "searchLift", "selectedLift", "lift_manufacturer", "lift_model", "mfg_serial", "lift_capacity", "lift_certified", "ali_certification", "lift_type", "lift_design", "inspector_certified", "inspector_name", "inspector_id", "inspection_date", "c1", "c2", "c3", "c4", "c5", "c6", "c7", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "completed", "status"]
+
+        var formatForm = function(data){
+            var valueArray = [];
+            for (var i = 0; i < formKeys.length; i++){
+                if(!data[formKeys[i]]){
+                    valueArray.push("");
+                } else if (typeof data[formKeys[i]] == "object"){
+                    valueArray.push(data[formKeys[i]].pass)
+                } else {
+                    valueArray.push(data[formKeys[i]]);
+                }
+            }
+            return valueArray
+        }
 
     ////////////////////////////////////////
     //Test for empty on object
@@ -54,7 +69,7 @@ app.factory('InspectionsService', function($q, $http) {
             if (isEmpty(inspections)) {    // items array is empty so populate it and return list from server to controller
 
                 var spreadsheet_id = spreadsheetID;
-                var range_name = 'Inspections!A1:E';
+                var range_name = 'Inspections!A1:Z';
                 var value_render_option = 'FORMATTED_VALUE';
                 var dimension = 'ROWS';
                 var params = {spreadsheetId:spreadsheet_id, range:range_name, valueRenderOption: value_render_option}
@@ -73,18 +88,35 @@ app.factory('InspectionsService', function($q, $http) {
                     inspections = finalData
                     deferred.resolve(inspections)
                 });
-
-
             } else {
                 deferred.resolve(inspections);   // items exist already so just return the array
             }
             return deferred.promise;
         },
         save: function(inspection) {
-            return $http.post('/',{item:item}).then(function(response) {
-                inspections.data.push(inspection);
-                return inspections;
+            console.log(inspection)
+            var deferred = $q.defer();
+            SpreadsheetService.list().then(function(result){
+                console.log(result);
+                console.log("success!")
+                var spreadsheet_id = result.id;
+                var range_name = 'Inspections!A2:B';
+                var dimension = 'ROWS';
+                var value_input_option =  'USER_ENTERED';
+                var values = [formatForm(inspection)];
+                var params = {spreadsheetId:spreadsheet_id, range:range_name, valueInputOption:value_input_option, values:values};
+                gapi.client.sheets.spreadsheets.values.append(params).execute(function(response){
+                    if(!response){
+                        deferred.reject("error")
+                    }
+                    deferred.resolve(response);
             });
+                return deferred.promise
+            },function(reason){
+                console.log("fail")
+            })
+            
+           return deferred.promise 
         }
 
 

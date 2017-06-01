@@ -3,9 +3,9 @@
     <md-button class="md-fab md-primary" aria-label="New Inspection" ng-href="#/inspect">
       <md-icon class="material-icons">playlist_add</md-icon>
     </md-button>
-    <md-button ng-click="saveSession()">Save data</md-button>
-    <md-button ng-click="getSession()">Get data</md-button>
-    {{ClientService}}
+<!--     <md-button ng-click="saveSession()">Save data</md-button>
+    <md-button ng-click="getSession()">Get data</md-button> -->
+    <!-- {{ClientService}} -->
 	<!-- Show inspections -->
 	<md-table-container>
     <table md-table>
@@ -20,11 +20,14 @@
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row ng-repeat="client in ClientService" data-ng-init="client.expanded = true">
-          <td md-cell>{{client.Owner}}</td>
-          <td md-cell>{{client.Company}}</td>
-          <td md-cell>{{client.created_at | date : "MMM d, y"}}</td>
-          <td md-cell>{{client.City}}, {{client.State}}</td>
+        <tr md-row ng-repeat="inspection in inspections.data" data-ng-init="inspection.expanded = true">
+          <td md-cell>{{inspection.lift_owner}}</td>
+          <td md-cell>{{inspection.lift_model}}</td>
+          <td md-cell>{{inspection.lift_manufacturer}}</td>
+          
+          <!-- <td md-cell>{{inspection.created_at | date : "MMM d, y"}}</td> -->
+          <td md-cell></td>
+          <td md-cell>{{inspection.city}}, {{inspection.state}}</td>
           <td md-cell>
             <md-icon ng-click="editInspection(inspection)" class="material-icons">mode_edit</md-icon>
           </td>
@@ -36,5 +39,3 @@
   </md-table-container>
 
 </div>
-
-

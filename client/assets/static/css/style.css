@@ -47,8 +47,6 @@
 
 /*Change this*/
 
-
-
 @media screen and (min-width:1000px){
 	#stepper-demo {
 		width:100%;
@@ -84,6 +82,11 @@
 	color:grey;
 }
 
+
+/*md-content {
+	background-color: white;
+}
+*/
 
 
 /*This is all for the dialog box*/

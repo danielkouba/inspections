@@ -36,6 +36,7 @@ app.config(function($httpProvider, $routeProvider,$locationProvider, $mdThemingP
 	    .addScope('https://www.googleapis.com/auth/spreadsheets')
 	    .addScope('https://www.googleapis.com/auth/drive')
 	    .addScope('https://www.googleapis.com/auth/drive.file')
+	    .addScope('https://www.googleapis.com/auth/gmail.send')
 		.addApi('drive', 'v2')
 		.addApi('sheets', 'v4')
 		.loadPickerLibrary();

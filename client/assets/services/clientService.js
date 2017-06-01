@@ -6,7 +6,7 @@ app.factory('ClientService', function($q, $http) {
     	var returnArray = [];
     	var formattedData = {};
     	for(var i = 1; i < arr.length; i++){
-        	formattedData = {};
+        	formattedData = {line : (i+1)};
         	for(var n = 0; n < keys.length; n++){
             	formattedData[keys[n]] = arr[i][n];
         	}
@@ -73,17 +73,23 @@ app.factory('ClientService', function($q, $http) {
                     deferred.resolve(clients)
                 });
 
-
             } else {
                 deferred.resolve(clients);   // items exist already so just return the array
             }
             return deferred.promise;
         },
         save: function(client) {
+            var deferred = $q.defer();
+
+
+
             return $http.post('/',{item:item}).then(function(response) {
                 clients.data.push(client);
                 return clients;
             });
+
+
+
         }
 
 

@@ -1,4 +1,4 @@
-app.controller('userController', function($location, $scope, $cookies, userFactory, UserService, InspectionService){
+app.controller('userController', function($location, $scope, $cookies, userFactory, UserService, InspectionService, InspectionsService, SpreadsheetService){
 
 	$scope.InspectionService = InspectionService;
 
@@ -8,6 +8,22 @@ app.controller('userController', function($location, $scope, $cookies, userFacto
     $scope.modifiedFile = [];
     $scope.pickedFile = {};
     $scope.filePicked = false;
+
+
+
+    $scope.inspectorView = function () {
+        SpreadsheetService.list().then(function(spreadsheet){
+            InspectionsService.list(spreadsheet.id).then(function(inspections){
+                $scope.inspections = inspections;
+                console.log(inspections)
+            })
+        })
+        // console.log("we ran this you beast")
+
+    }
+
+
+
 
     // Click Listener. If the user consent the scope, this function is called
     // Is the onSuccess function of GoogleAuth.attachClickHandler.

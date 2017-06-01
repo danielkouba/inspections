@@ -160,7 +160,6 @@ app.controller('navController', function($rootScope, $scope, $q, $location,Clien
             $scope.lifts = result.data
         })
         
-
         InspectionsService.list($scope.foundSpreadsheet.id).then(function(result){
             console.log(result)
             $scope.inspections = result.data

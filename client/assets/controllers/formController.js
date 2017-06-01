@@ -101,28 +101,18 @@ app.controller('formController', function($location, $scope, $cookies, formFacto
 	$scope.formView = function(){
             $scope.formData = {};
             // console.log(InspectionService)
-
-            console.log("SPREAD SHEET SERVICE")
             SpreadsheetService.list().then(function(spreadsheet){
-                console.log(spreadsheet)
 
                 ClientService.list(spreadsheet.id).then(function(result){
                     console.log(result.data)
                     $scope.clients = result.data;
                 });
-
+                LiftService.list(spreadsheet.id).then(function(result){
+                    console.log(result.data)
+                    $scope.lifts = result.data;
+                })
 
             })
-            console.log("SPREAD SHEET SERVICE")
-
-
-
-            // if (InspectionService._id){
-            //     console.log("EDITING")
-            //     $scope.formData = InspectionService;
-            // }
-            // getLiftOwners();
-
 	}
 
 	// END Constructors
@@ -149,16 +139,23 @@ app.controller('formController', function($location, $scope, $cookies, formFacto
 
 
 	$scope.submitForm = function(){
-		formFactory.submitForm($scope.formData, function(data){
-			if(data.errors){
-				console.log("There was an error")
-				console.log(data.errors)
-			} else {
-				console.log("Success!")
-				console.log(data)
-				$location.url('/dashboard/inspector')
-			}
-		})
+		// formFactory.submitForm($scope.formData, function(data){
+		// 	if(data.errors){
+		// 		console.log("There was an error")
+		// 		console.log(data.errors)
+		// 	} else {
+		// 		console.log("Success!")
+		// 		console.log(data)
+		// 		$location.url('/dashboard/inspector')
+		// 	}
+		// })
+        InspectionsService.save($scope.formData).then(function(result){
+            console.log("Success")
+            console.log(result)
+        }, function(reason){
+            console.log("Failure")
+            console.log(reason)
+        })
 
 	}
 
