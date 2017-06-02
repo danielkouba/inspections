@@ -281,8 +281,7 @@ app.controller('formController', function($location, $scope, $cookies, $location
         .ariaLabel('pass fail')
         .targetEvent(ev)
         .ok('Pass')
-        .ok('Fail')
-        .cancel('Cancel');
+        .cancel('Fail');
 
 
     $mdDialog.show(passFail).then(function(data) {
