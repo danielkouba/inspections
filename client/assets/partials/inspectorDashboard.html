@@ -22,11 +22,11 @@
       <tbody md-body>
         <tr md-row ng-repeat="inspection in inspections.data" data-ng-init="inspection.expanded = true">
           <td md-cell>{{inspection.lift_owner}}</td>
-          <td md-cell>{{inspection.lift_model}}</td>
-          <td md-cell>{{inspection.lift_manufacturer}}</td>
+          <td md-cell>{{inspection.lift_model}} - {{inspection.lift_manufacturer}}</td>
+          <td md-cell>{{inspection.date}}</td>
           
           <!-- <td md-cell>{{inspection.created_at | date : "MMM d, y"}}</td> -->
-          <td md-cell></td>
+          <td md-cell style="color:{{testPassColor(inspection.pass)}}">{{inspection.pass}}</td>
           <td md-cell>{{inspection.city}}, {{inspection.state}}</td>
           <td md-cell>
             <md-icon ng-click="editInspection(inspection)" class="material-icons">mode_edit</md-icon>

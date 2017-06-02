@@ -69,7 +69,7 @@ app.factory('InspectionsService', function($q, $http, SpreadsheetService) {
             if (isEmpty(inspections)) {    // items array is empty so populate it and return list from server to controller
 
                 var spreadsheet_id = spreadsheetID;
-                var range_name = 'Inspections!A1:Z';
+                var range_name = 'Inspections!A1:AS';
                 var value_render_option = 'FORMATTED_VALUE';
                 var dimension = 'ROWS';
                 var params = {spreadsheetId:spreadsheet_id, range:range_name, valueRenderOption: value_render_option}

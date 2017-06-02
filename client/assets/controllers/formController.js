@@ -1,4 +1,4 @@
-app.controller('formController', function($location, $scope, $cookies, formFactory, $mdStepper, $mdDialog, userFactory, InspectionService, InspectionsService, LiftService, ClientService, SpreadsheetService){
+app.controller('formController', function($location, $scope, $cookies, $location, formFactory, $mdStepper, $mdDialog, userFactory, InspectionService, InspectionsService, LiftService, ClientService, SpreadsheetService){
 
 	var getdate = function(){
 		var datenow = new Date();
@@ -12,7 +12,6 @@ app.controller('formController', function($location, $scope, $cookies, formFacto
 	}
 
 	$scope.formData = {};
-
 	$scope.appendix = {};
 	
 	$scope.appendix.c = [
@@ -93,26 +92,25 @@ app.controller('formController', function($location, $scope, $cookies, formFacto
                 "subject":"Confirm rotation prevention device on single post lifts."}
 	];
 
-
 	////////////////////////////////////////
 	// Constructors
 	////////////////////////////////////////
 
 	$scope.formView = function(){
-            $scope.formData = {};
-            // console.log(InspectionService)
-            SpreadsheetService.list().then(function(spreadsheet){
+        $scope.formData = {};
+        $scope.formData.inspection_date = getdate();
+        // console.log(InspectionService)
+        SpreadsheetService.list().then(function(spreadsheet){
 
-                ClientService.list(spreadsheet.id).then(function(result){
-                    console.log(result.data)
-                    $scope.clients = result.data;
-                });
-                LiftService.list(spreadsheet.id).then(function(result){
-                    console.log(result.data)
-                    $scope.lifts = result.data;
-                })
-
+            ClientService.list(spreadsheet.id).then(function(result){
+                console.log(result.data)
+                $scope.clients = result.data;
+            });
+            LiftService.list(spreadsheet.id).then(function(result){
+                console.log(result.data)
+                $scope.lifts = result.data;
             })
+        })
 	}
 
 	// END Constructors
@@ -152,6 +150,7 @@ app.controller('formController', function($location, $scope, $cookies, formFacto
         InspectionsService.save($scope.formData).then(function(result){
             console.log("Success")
             console.log(result)
+            $location.url("/dashboard/inspector")
         }, function(reason){
             console.log("Failure")
             console.log(reason)
@@ -212,13 +211,16 @@ app.controller('formController', function($location, $scope, $cookies, formFacto
     // Lift Drop Down Handler
     ////////////////////////////////////////
     $scope.selectedLiftChange = function(item) {
-        console.log('Item changed to ' + item);
+        console.log(item);
+        console.log("This is item^^^^");
         $scope.formData.lift_manufacturer = item.manufacturer;
         $scope.formData.lift_model = item.model;
-        $scope.formData.mfg_serial = item.serial;
-        $scope.formData.lift_capacity = item.capacity;
-        $scope.formData.lift_type = item.type;
-        $scope.formData.lift_id = item._id;
+        $scope.formData.mfg_serial = item.mfg_serial;
+        console.log($scope.formData.mfg_serial)
+        $scope.formData.lift_capacity = item.lift_capacity;
+        $scope.formData.lift_type = item.lift_type;
+        $scope.formData.lift_design = item.lift_design;
+
 
     }
 
@@ -279,10 +281,14 @@ app.controller('formController', function($location, $scope, $cookies, formFacto
         .ariaLabel('pass fail')
         .targetEvent(ev)
         .ok('Pass')
-        .cancel('Fail');
+        .ok('Fail')
+        .cancel('Cancel');
 
 
-    $mdDialog.show(passFail).then(function() {
+    $mdDialog.show(passFail).then(function(data) {
+        console.log("This is data")
+        console.log(data)
+        console.log("This is data")
         $scope.formData.status = 'pass';
         $scope.submitForm();
     }, function() {

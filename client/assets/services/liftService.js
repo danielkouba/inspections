@@ -53,7 +53,7 @@ app.factory('LiftService', function($q, $http) {
             if (isEmpty(lifts)) {    // items array is empty so populate it and return list from server to controller
 
                 var spreadsheet_id = spreadsheetID;
-                var range_name = 'Lifts!A1:E';
+                var range_name = 'Lifts!A1:F';
                 var value_render_option = 'FORMATTED_VALUE';
                 var dimension = 'ROWS';
                 var params = {spreadsheetId:spreadsheet_id, range:range_name, valueRenderOption: value_render_option}

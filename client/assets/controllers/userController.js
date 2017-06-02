@@ -22,7 +22,13 @@ app.controller('userController', function($location, $scope, $cookies, userFacto
 
     }
 
-
+    $scope.testPassColor = function(pass){
+        if (pass === 'pass'){
+            return 'green'
+        } else {
+            return 'red'
+        }
+    }
 
 
     // Click Listener. If the user consent the scope, this function is called
