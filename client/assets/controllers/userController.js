@@ -69,14 +69,14 @@ app.controller('userController', function($location, $scope, $cookies, userFacto
         formArray.push(["Appendix C",""]);
 
         console.log(formArray)
-        for(var i = 0; i < $scope.appendix.c.length; i++){
-			formArray.push([$scope.appendix.c[i].subject , inspection[$scope.appendix.c[i].key].pass])
-		}
-        formArray.push(["Appendix D",""])
+  //       for(var i = 0; i < $scope.appendix.c.length; i++){
+		// 	formArray.push([$scope.appendix.c[i].subject , inspection[$scope.appendix.c[i].key].pass])
+		// }
+  //       formArray.push(["Appendix D",""])
 
-        for(var i = 0; i < $scope.appendix.d.length; i++){
-			formArray.push([$scope.appendix.d[i].subject , inspection[$scope.appendix.d[i].key].pass])
-		}
+  //       for(var i = 0; i < $scope.appendix.d.length; i++){
+		// 	formArray.push([$scope.appendix.d[i].subject , inspection[$scope.appendix.d[i].key].pass])
+		// }
 		        
 
 
